@@ -1,10 +1,16 @@
 Dieses Dokument beschreibt die vorhandenen Dokumente und deren Format.
 
 ablaufplan.planner
-	Unvollständiger Ablaufplan, erstellt mit planner
+	Ablaufplan, erstellt mit planner
+
+ablaufplan.html
+	Ablaufplan im HTML-Format
 
 grobkonzept.odt
 	Grobkonzept (zZ noch kein Grundgerüst), OpenDocument Text
+
+grobkonzept.mm
+	Temporäre MindMap als Hilfsmittel zur Strukturierung des Grobkonzepts
 
 meilensteinliste.odt
 	Meilensteinliste, OpenDocument Text
@@ -16,13 +22,19 @@ projektauftrag.odt
 	Projektauftrag, OpenDocument Text
 
 psp.mm
-	Projektstrukturplan als MindMap, erstellt mit FreeMind.
+	Projektstrukturplan als MindMap, erstellt mit FreeMind
+
+psp.jpeg
+	Projektstrukturplan als MindMap exportiert zum JPEG-Format
+
+psp.odg
+	Alter Projektstrukturplan im OpenDocument Graphics Format
 
 README
-	Diese Datei, ASCII-Textfile.
+	Diese Datei, ASCII-Textfile
 
 RESSOURCES
-	Informationen zu benötigten Ressourcen, ASCII-Textfile.
+	Informationen zu benötigten Ressourcen, ASCII-Textfile
 
 tagebuch.odt
 	Projekttagebuch, OpenDocument Text
