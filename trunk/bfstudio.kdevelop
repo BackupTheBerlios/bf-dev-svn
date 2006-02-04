@@ -2,7 +2,7 @@
 <kdevelop>
   <general>
     <author>Daniel Posch</author>
-    <email>d.posch@inode.at</email>
+    <email>danpo@users.berlios.de</email>
     <version>0.1</version>
     <projectmanagement>KDevTrollProject</projectmanagement>
     <primarylanguage>C++</primarylanguage>
@@ -11,6 +11,9 @@
     </keywords>
     <versioncontrol>kdevsubversion</versioncontrol>
     <ignoreparts/>
+    <projectdirectory>.</projectdirectory>
+    <absoluteprojectpath>false</absoluteprojectpath>
+    <description></description>
   </general>
   <kdevfileview>
     <groups>
@@ -18,10 +21,13 @@
       <group pattern="*.ui" name="User Interface" />
       <group pattern="*.png" name="Icons" />
       <group pattern="*" name="Others" />
+      <hidenonprojectfiles>false</hidenonprojectfiles>
+      <hidenonlocation>false</hidenonlocation>
     </groups>
     <tree>
       <hidenonprojectfiles>false</hidenonprojectfiles>
       <hidepatterns>*.o,*.lo,CVS</hidepatterns>
+      <showvcsfields>false</showvcsfields>
     </tree>
   </kdevfileview>
   <kdevdoctreeview>
@@ -64,30 +70,51 @@
   </kdevdoctreeview>
   <kdevdebugger>
     <general>
-      <dbgshell/>
+      <dbgshell></dbgshell>
       <breakpoints/>
-      <programargs/>
+      <programargs></programargs>
       <gdbpath>/usr/bin/</gdbpath>
       <breakonloadinglibs>true</breakonloadinglibs>
       <separatetty>false</separatetty>
       <floatingtoolbar>false</floatingtoolbar>
+      <configGdbScript></configGdbScript>
+      <runShellScript></runShellScript>
+      <runGdbScript></runGdbScript>
     </general>
     <display>
       <staticmembers>false</staticmembers>
       <demanglenames>true</demanglenames>
+      <outputradix>10</outputradix>
     </display>
     <breakpoints/>
   </kdevdebugger>
   <kdevtrollproject>
     <run>
-      <mainprogram>./bin/bfstudio</mainprogram>
-      <programargs/>
+      <mainprogram>bin/bfstudio</mainprogram>
+      <programargs></programargs>
+      <directoryradio>executable</directoryradio>
+      <customdirectory>/</customdirectory>
+      <terminal>false</terminal>
+      <autocompile>true</autocompile>
+      <envvars/>
     </run>
+    <general>
+      <activedir>src</activedir>
+    </general>
+    <make>
+      <abortonerror>true</abortonerror>
+      <numberofjobs>1</numberofjobs>
+      <dontact>false</dontact>
+      <makebin></makebin>
+      <prio>0</prio>
+      <envvars/>
+    </make>
   </kdevtrollproject>
   <workspace>
     <openfiles/>
   </workspace>
   <kdevfilecreate>
+    <filetypes/>
     <useglobaltypes>
       <type ext="ui" />
       <type ext="cpp" />
@@ -97,8 +124,9 @@
   </kdevfilecreate>
   <kdevdocumentation>
     <projectdoc>
-      <docsystem>Doxygen Documentation Collection</docsystem>
-      <docurl>bfstudio.tag</docurl>
+      <docsystem></docsystem>
+      <docurl></docurl>
+      <usermanualurl></usermanualurl>
     </projectdoc>
   </kdevdocumentation>
   <substmap>
@@ -113,4 +141,42 @@
     <YEAR>2006</YEAR>
     <dest>/home/danpo/devel/bfstudio</dest>
   </substmap>
+  <cppsupportpart>
+    <filetemplates>
+      <interfacesuffix>.h</interfacesuffix>
+      <implementationsuffix>.cpp</implementationsuffix>
+    </filetemplates>
+  </cppsupportpart>
+  <kdevcppsupport>
+    <qt>
+      <used>true</used>
+      <version>4</version>
+      <root>/usr/share/qt4/</root>
+    </qt>
+    <codecompletion>
+      <includeGlobalFunctions>true</includeGlobalFunctions>
+      <includeTypes>true</includeTypes>
+      <includeEnums>true</includeEnums>
+      <includeTypedefs>false</includeTypedefs>
+      <automaticCodeCompletion>true</automaticCodeCompletion>
+      <automaticArgumentsHint>true</automaticArgumentsHint>
+      <automaticHeaderCompletion>true</automaticHeaderCompletion>
+      <codeCompletionDelay>250</codeCompletionDelay>
+      <argumentsHintDelay>400</argumentsHintDelay>
+      <headerCompletionDelay>250</headerCompletionDelay>
+    </codecompletion>
+    <creategettersetter>
+      <prefixGet>get</prefixGet>
+      <prefixSet>set</prefixSet>
+      <prefixVariable>m_,_</prefixVariable>
+      <parameterName>value</parameterName>
+      <inlineGet>true</inlineGet>
+      <inlineSet>true</inlineSet>
+    </creategettersetter>
+    <references/>
+  </kdevcppsupport>
+  <ctagspart>
+    <customArguments></customArguments>
+    <customTagfilePath></customTagfilePath>
+  </ctagspart>
 </kdevelop>
