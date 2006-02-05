@@ -1,0 +1,336 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Brainfuck Studio</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" />
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHelp" >
+    <property name="title" >
+     <string>Help</string>
+    </property>
+    <addaction name="actionBrainfuck_Studio_Handbook" />
+    <addaction name="actionAbout_Brainfuck_Studio" />
+   </widget>
+   <widget class="QMenu" name="menuWindow" >
+    <property name="title" >
+     <string>Window</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuFile" >
+    <property name="title" >
+     <string>File</string>
+    </property>
+    <addaction name="actionNew" />
+    <addaction name="actionOpen" />
+    <addaction name="actionOpen_Recent" />
+    <addaction name="separator" />
+    <addaction name="actionSave" />
+    <addaction name="actionSave_as" />
+    <addaction name="actionSave_All" />
+    <addaction name="separator" />
+    <addaction name="actionPrint" />
+    <addaction name="separator" />
+    <addaction name="actionClose" />
+    <addaction name="actionClose_All" />
+    <addaction name="actionClose_All_Others" />
+    <addaction name="separator" />
+    <addaction name="actionExit" />
+   </widget>
+   <widget class="QMenu" name="menuDebug" >
+    <property name="title" >
+     <string>Debug</string>
+    </property>
+    <addaction name="actionStart" />
+    <addaction name="actionStop" />
+    <addaction name="actionInterrupt" />
+    <addaction name="actionRun_to_Cursor" />
+    <addaction name="separator" />
+    <addaction name="actionStep_over" />
+    <addaction name="actionStep_into" />
+    <addaction name="actionStep_out" />
+    <addaction name="separator" />
+    <addaction name="actionToggle_Breakpoint" />
+   </widget>
+   <widget class="QMenu" name="menuRun" >
+    <property name="title" >
+     <string>Compile</string>
+    </property>
+    <widget class="QMenu" name="menuOptimisation" >
+     <property name="title" >
+      <string>Optimisation</string>
+     </property>
+     <addaction name="actionNo_Optimisation" />
+     <addaction name="actionLevel_1" />
+     <addaction name="actionLevel_2" />
+     <addaction name="actionLevel_3" />
+    </widget>
+    <addaction name="actionCompile" />
+    <addaction name="menuOptimisation" />
+    <addaction name="separator" />
+    <addaction name="actionOnly_Interpret" />
+   </widget>
+   <widget class="QMenu" name="menuEdit" >
+    <property name="title" >
+     <string>Edit</string>
+    </property>
+    <addaction name="actionUndo" />
+    <addaction name="actionRedo" />
+    <addaction name="separator" />
+    <addaction name="actionCut" />
+    <addaction name="actionCopy" />
+    <addaction name="actionPaste" />
+    <addaction name="separator" />
+    <addaction name="actionSelect_all" />
+    <addaction name="actionDeselect" />
+    <addaction name="separator" />
+    <addaction name="actionOverwrite_Mode" />
+    <addaction name="separator" />
+    <addaction name="actionFind" />
+    <addaction name="actionFind_Next" />
+    <addaction name="actionFind_Previous" />
+    <addaction name="separator" />
+    <addaction name="actionPreferences" />
+   </widget>
+   <addaction name="menuFile" />
+   <addaction name="menuEdit" />
+   <addaction name="menuRun" />
+   <addaction name="menuDebug" />
+   <addaction name="menuWindow" />
+   <addaction name="menuHelp" />
+  </widget>
+  <widget class="QStatusBar" name="statusbar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>581</y>
+     <width>800</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <action name="actionBrainfuck_Studio_Handbook" >
+   <property name="text" >
+    <string>Brainfuck Studio Handbook</string>
+   </property>
+  </action>
+  <action name="actionAbout_Brainfuck_Studio" >
+   <property name="text" >
+    <string>About Brainfuck Studio</string>
+   </property>
+  </action>
+  <action name="actionStart" >
+   <property name="text" >
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="actionStop" >
+   <property name="text" >
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionInterrupt" >
+   <property name="text" >
+    <string>Interrupt</string>
+   </property>
+  </action>
+  <action name="actionRun_to_Cursor" >
+   <property name="text" >
+    <string>Run to Cursor</string>
+   </property>
+  </action>
+  <action name="actionSet_Execution_Position_to_Cursor" >
+   <property name="text" >
+    <string>Set Execution Position to Cursor</string>
+   </property>
+  </action>
+  <action name="actionStep_over" >
+   <property name="text" >
+    <string>Step Over</string>
+   </property>
+  </action>
+  <action name="actionStep_into" >
+   <property name="text" >
+    <string>Step Into</string>
+   </property>
+  </action>
+  <action name="actionStep_out" >
+   <property name="text" >
+    <string>Step Out</string>
+   </property>
+  </action>
+  <action name="actionToggle_Breakpoint" >
+   <property name="text" >
+    <string>Toggle Breakpoint</string>
+   </property>
+  </action>
+  <action name="actionUndo" >
+   <property name="text" >
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo" >
+   <property name="text" >
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionCut" >
+   <property name="text" >
+    <string>Cut</string>
+   </property>
+  </action>
+  <action name="actionCopy" >
+   <property name="text" >
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionPaste" >
+   <property name="text" >
+    <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionSelect_all" >
+   <property name="text" >
+    <string>Select all</string>
+   </property>
+  </action>
+  <action name="actionDeselect" >
+   <property name="text" >
+    <string>Deselect</string>
+   </property>
+  </action>
+  <action name="actionOverwrite_Mode" >
+   <property name="text" >
+    <string>Overwrite Mode</string>
+   </property>
+  </action>
+  <action name="actionFind" >
+   <property name="text" >
+    <string>Find</string>
+   </property>
+  </action>
+  <action name="actionFind_Next" >
+   <property name="text" >
+    <string>Find Next</string>
+   </property>
+  </action>
+  <action name="actionFind_Previous" >
+   <property name="text" >
+    <string>Find Previous</string>
+   </property>
+  </action>
+  <action name="actionNew" >
+   <property name="text" >
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionOpen" >
+   <property name="text" >
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionOpen_Recent" >
+   <property name="text" >
+    <string>Open Recent</string>
+   </property>
+  </action>
+  <action name="actionSave" >
+   <property name="text" >
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_as" >
+   <property name="text" >
+    <string>Save As</string>
+   </property>
+  </action>
+  <action name="actionSave_All" >
+   <property name="text" >
+    <string>Save All</string>
+   </property>
+  </action>
+  <action name="actionPrint" >
+   <property name="text" >
+    <string>Print</string>
+   </property>
+  </action>
+  <action name="actionClose" >
+   <property name="text" >
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionClose_All" >
+   <property name="text" >
+    <string>Close All</string>
+   </property>
+  </action>
+  <action name="actionClose_All_Others" >
+   <property name="text" >
+    <string>Close All Others</string>
+   </property>
+  </action>
+  <action name="actionExit" >
+   <property name="text" >
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionCompile" >
+   <property name="text" >
+    <string>Compile</string>
+   </property>
+  </action>
+  <action name="actionOnly_Interpret" >
+   <property name="text" >
+    <string>Only Interpret</string>
+   </property>
+  </action>
+  <action name="actionNo_Optimisation" >
+   <property name="text" >
+    <string>No Optimisation</string>
+   </property>
+  </action>
+  <action name="actionLevel_1" >
+   <property name="text" >
+    <string>Level 1</string>
+   </property>
+  </action>
+  <action name="actionLevel_2" >
+   <property name="text" >
+    <string>Level 2</string>
+   </property>
+  </action>
+  <action name="actionLevel_3" >
+   <property name="text" >
+    <string>Level 3</string>
+   </property>
+  </action>
+  <action name="actionPreferences" >
+   <property name="text" >
+    <string>Settings</string>
+   </property>
+  </action>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <resources/>
+ <connections/>
+</ui>
