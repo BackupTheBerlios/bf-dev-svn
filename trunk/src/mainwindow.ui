@@ -15,7 +15,38 @@
   <property name="windowTitle" >
    <string>Brainfuck Studio</string>
   </property>
-  <widget class="QWidget" name="centralwidget" />
+  <widget class="QWidget" name="centralwidget" >
+   <widget class="QTabWidget" name="tabWidget" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>410</y>
+      <width>781</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="tab" >
+     <attribute name="title" >
+      <string>Tab 1</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_2" >
+     <attribute name="title" >
+      <string>Tab 2</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QTextEdit" name="textEdit" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>781</width>
+      <height>391</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
     <rect>
