@@ -8,9 +8,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>531</width>
-    <height>412</height>
+    <width>404</width>
+    <height>311</height>
    </rect>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>404</width>
+    <height>311</height>
+   </size>
   </property>
   <property name="windowTitle" >
    <string>Brainfuck Studio - Settings</string>
@@ -31,177 +37,672 @@
       <attribute name="title" >
        <string>Editor</string>
       </attribute>
-      <widget class="QCheckBox" name="checkBox_2" >
-       <property name="geometry" >
-        <rect>
-         <x>30</x>
-         <y>60</y>
-         <width>141</width>
-         <height>19</height>
-        </rect>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>9</number>
        </property>
-       <property name="font" >
-        <font>
-         <family>Sans Serif</family>
-         <pointsize>12</pointsize>
-         <weight>50</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
+       <property name="spacing" >
+        <number>6</number>
        </property>
-       <property name="text" >
-        <string>Syntax-Highlighting</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox" >
-       <property name="geometry" >
-        <rect>
-         <x>30</x>
-         <y>30</y>
-         <width>141</width>
-         <height>19</height>
-        </rect>
-       </property>
-       <property name="font" >
-        <font>
-         <family>Sans Serif</family>
-         <pointsize>12</pointsize>
-         <weight>50</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
-       </property>
-       <property name="text" >
-        <string>Show line numbers</string>
-       </property>
-      </widget>
+       <item>
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QCheckBox" name="checkBox" >
+             <property name="font" >
+              <font>
+               <family>Sans Serif</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+               <underline>false</underline>
+               <strikeout>false</strikeout>
+              </font>
+             </property>
+             <property name="text" >
+              <string>Show line numbers</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_2" >
+             <property name="font" >
+              <font>
+               <family>Sans Serif</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+               <underline>false</underline>
+               <strikeout>false</strikeout>
+              </font>
+             </property>
+             <property name="text" >
+              <string>Syntax-Highlighting</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QGridLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item row="1" column="1" >
+            <widget class="QComboBox" name="comboBox_4" >
+             <item>
+              <property name="text" >
+               <string>UTF-8</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>ISO 8859-15</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="0" column="1" >
+            <widget class="QComboBox" name="comboBox_3" >
+             <item>
+              <property name="text" >
+               <string>Windows</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Unix</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Mac</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QLabel" name="label_5" >
+             <property name="text" >
+              <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Encoding&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label_4" >
+             <property name="text" >
+              <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">End of line&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox" >
+         <property name="title" >
+          <string>Fonts</string>
+         </property>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_6" >
+              <property name="text" >
+               <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Character&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_5" >
+              <item>
+               <property name="text" >
+                <string>> (increment pointer)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>&lt; (decrement pointer)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>+ (increment cell value)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>- (decrement cell value)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>. (output cell value)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>, (read cell value)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>[ (start loop)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>] (end loop)</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_7" >
+              <property name="text" >
+               <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Font&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_6" >
+              <property name="minimumSize" >
+               <size>
+                <width>89</width>
+                <height>0</height>
+               </size>
+              </property>
+              <item>
+               <property name="text" >
+                <string>Courier New</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_8" >
+              <property name="text" >
+               <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Style&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_7" >
+              <property name="minimumSize" >
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <item>
+               <property name="text" >
+                <string>Standard</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>fett</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>kursiv</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>fett kursiv</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_9" >
+              <property name="text" >
+               <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Size&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_8" >
+              <property name="minimumSize" >
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <item>
+               <property name="text" >
+                <string>10</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>11</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>12</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2" >
+         <property name="title" >
+          <string>Colors</string>
+         </property>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_10" >
+              <property name="text" >
+               <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Character&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_9" >
+              <item>
+               <property name="text" >
+                <string>> (increment pointer)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>&lt; (decrement pointer)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>+ (increment cell value)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>- (decrement cell value)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>. (output cell value)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>, (read cell value)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>[ (start loop)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>] (end loop)</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_11" >
+              <property name="text" >
+               <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Color&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_10" >
+              <property name="minimumSize" >
+               <size>
+                <width>60</width>
+                <height>0</height>
+               </size>
+              </property>
+              <item>
+               <property name="text" >
+                <string>Black</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Red</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Yellow</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Blue</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Green</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Grey</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab_3" >
       <attribute name="title" >
        <string>Compiler</string>
       </attribute>
-      <widget class="QComboBox" name="comboBox" >
-       <property name="geometry" >
-        <rect>
-         <x>200</x>
-         <y>30</y>
-         <width>101</width>
-         <height>22</height>
-        </rect>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
        </property>
        <item>
-        <property name="text" >
-         <string>Windows</string>
-        </property>
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label" >
+             <property name="text" >
+              <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Target platform&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox" >
+             <item>
+              <property name="text" >
+               <string>Windows 32</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Linux x86</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_2" >
+             <property name="text" >
+              <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Optimisation Level&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox_2" >
+             <item>
+              <property name="text" >
+               <string>Level 1</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Level 2</string>
+              </property>
+             </item>
+             <item>
+              <property name="text" >
+               <string>Level 3</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_3" >
+             <property name="text" >
+              <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Target file&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit" />
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_3" >
+           <property name="font" >
+            <font>
+             <family>Sans Serif</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+           <property name="text" >
+            <string>Show warnings</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <property name="text" >
-         <string>Unix</string>
-        </property>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
-      </widget>
-      <widget class="QLabel" name="label" >
-       <property name="geometry" >
-        <rect>
-         <x>20</x>
-         <y>30</y>
-         <width>103</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <property name="text" >
-        <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Target platform&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="comboBox_2" >
-       <property name="geometry" >
-        <rect>
-         <x>200</x>
-         <y>70</y>
-         <width>101</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <item>
-        <property name="text" >
-         <string>Level 1</string>
-        </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>Level 2</string>
-        </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>Level 3</string>
-        </property>
-       </item>
-      </widget>
-      <widget class="QLabel" name="label_2" >
-       <property name="geometry" >
-        <rect>
-         <x>20</x>
-         <y>70</y>
-         <width>121</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <property name="text" >
-        <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Optimisation Level&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3" >
-       <property name="geometry" >
-        <rect>
-         <x>20</x>
-         <y>110</y>
-         <width>121</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <property name="text" >
-        <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt;">Target file&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit" >
-       <property name="geometry" >
-        <rect>
-         <x>200</x>
-         <y>110</y>
-         <width>211</width>
-         <height>20</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_3" >
-       <property name="geometry" >
-        <rect>
-         <x>20</x>
-         <y>150</y>
-         <width>141</width>
-         <height>19</height>
-        </rect>
-       </property>
-       <property name="font" >
-        <font>
-         <family>Sans Serif</family>
-         <pointsize>12</pointsize>
-         <weight>50</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
-       </property>
-       <property name="text" >
-        <string>Show warnings</string>
-       </property>
-      </widget>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab_4" >
       <attribute name="title" >
