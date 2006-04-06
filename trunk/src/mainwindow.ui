@@ -50,7 +50,7 @@
        </size>
       </property>
       <property name="currentIndex" >
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="compilerTab" >
        <attribute name="title" >
@@ -64,7 +64,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QTextEdit" name="textEdit" >
+         <widget class="QTextEdit" name="compiler" >
           <property name="readOnly" >
            <bool>true</bool>
           </property>
@@ -84,43 +84,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QTableWidget" name="tableWidget" >
-          <row>
-           <property name="text" >
-            <string>Cell </string>
-           </property>
-          </row>
-          <column>
-           <property name="text" >
-            <string>#1</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>#2</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>#3</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>#4</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>#5</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>#6</string>
-           </property>
-          </column>
-         </widget>
+         <widget class="QTableView" name="debugger" />
         </item>
        </layout>
       </widget>
@@ -136,7 +100,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QTextEdit" name="textEdit_2" >
+         <widget class="QTextEdit" name="interpreter" >
           <property name="readOnly" >
            <bool>true</bool>
           </property>

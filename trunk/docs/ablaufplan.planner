@@ -25,7 +25,7 @@
   </calendars>
   <tasks>
     <task id="1" name="Projektstart" note="" work="0" start="20051013T000000Z" end="20051013T000000Z" work-start="20051013T080000Z" percent-complete="0" priority="500" type="milestone" scheduling="fixed-work"/>
-    <task id="2" name="Spezifikation" note="" work="3052800" duration="3052800" start="20051013T000000Z" end="20060309T170000Z" work-start="20051013T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+    <task id="2" name="Spezifikation" note="" work="3600000" duration="3600000" start="20051013T000000Z" end="20060405T170000Z" work-start="20051013T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
       <predecessors>
         <predecessor id="1" predecessor-id="1" type="FS"/>
       </predecessors>
@@ -63,75 +63,113 @@
           <predecessor id="1" predecessor-id="8" type="FS"/>
         </predecessors>
       </task>
-      <task id="10" name="Erstellung des Feinkonzepts" note="" work="1612800" duration="1612800" start="20051222T000000Z" end="20060309T170000Z" work-start="20051222T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+      <task id="10" name="Erstellung des Feinkonzepts" note="" work="2160000" duration="2160000" start="20051222T000000Z" end="20060405T170000Z" work-start="20051222T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
         <constraint type="must-start-on" time="20051222T000000Z"/>
         <predecessors>
           <predecessor id="1" predecessor-id="9" type="FS"/>
         </predecessors>
       </task>
-      <task id="11" name="Feinkonzept" note="" work="0" start="20060309T170000Z" end="20060309T170000Z" work-start="20060309T170000Z" percent-complete="0" priority="500" type="milestone" scheduling="fixed-work">
+      <task id="11" name="Feinkonzept" note="" work="0" start="20060405T170000Z" end="20060405T170000Z" work-start="20060405T170000Z" percent-complete="0" priority="500" type="milestone" scheduling="fixed-work">
         <constraint type="start-no-earlier-than" time="20051201T080000Z"/>
         <predecessors>
           <predecessor id="1" predecessor-id="10" type="FS"/>
         </predecessors>
       </task>
     </task>
-    <task id="12" name="Entwicklung der Software" note="" work="1152000" duration="1152000" start="20060309T170000Z" end="20060504T170000Z" work-start="20060310T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+    <task id="12" name="Entwicklung der Software" note="" work="1036800" duration="1036800" start="20060405T170000Z" end="20060525T170000Z" work-start="20060406T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
       <predecessors>
         <predecessor id="1" predecessor-id="2" type="FS"/>
       </predecessors>
-      <task id="13" name="Implementierung der Entwicklungswerkzeuge" note="" work="576000" duration="576000" start="20060309T170000Z" end="20060406T170000Z" work-start="20060310T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration"/>
-      <task id="14" name="Fertigstellung der Entwicklungswerkzeuge" note="" work="0" start="20060406T170000Z" end="20060406T170000Z" work-start="20060406T170000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+      <task id="13" name="Entwicklungswerkzeuge" note="" work="921600" duration="921600" start="20060405T170000Z" end="20060519T170000Z" work-start="20060406T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+        <task id="14" name="Parser" note="" work="288000" duration="288000" start="20060405T170000Z" end="20060419T170000Z" work-start="20060406T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration"/>
+        <task id="15" name="Interpreter" note="" work="144000" duration="144000" start="20060419T170000Z" end="20060426T170000Z" work-start="20060420T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+          <predecessors>
+            <predecessor id="1" predecessor-id="14" type="FS"/>
+          </predecessors>
+        </task>
+        <task id="16" name="Debugger" note="" work="144000" duration="144000" start="20060421T170000Z" end="20060428T170000Z" work-start="20060424T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+          <predecessors>
+            <predecessor id="1" predecessor-id="15" type="SS" lag="172800"/>
+          </predecessors>
+        </task>
+        <task id="17" name="Compiler" note="" work="432000" duration="432000" start="20060428T170000Z" end="20060519T170000Z" work-start="20060501T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+          <predecessors>
+            <predecessor id="1" predecessor-id="16" type="FS"/>
+            <predecessor id="1" predecessor-id="15" type="FS"/>
+            <predecessor id="1" predecessor-id="14" type="FS"/>
+          </predecessors>
+        </task>
+      </task>
+      <task id="18" name="Fertigstellung der Entwicklungswerkzeuge" note="" work="0" start="20060519T170000Z" end="20060519T170000Z" work-start="20060519T170000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
         <predecessors>
           <predecessor id="1" predecessor-id="13" type="FS"/>
         </predecessors>
       </task>
-      <task id="15" name="Implementierung der Benutzeroberfl&#xE4;che" note="" work="1152000" duration="1152000" start="20060309T170000Z" end="20060504T170000Z" work-start="20060310T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration"/>
-      <task id="16" name="Fertigstellung der Benutzeroberfl&#xE4;che" note="" work="0" start="20060504T170000Z" end="20060504T170000Z" work-start="20060504T170000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
-        <predecessors>
-          <predecessor id="1" predecessor-id="15" type="FS"/>
-        </predecessors>
+      <task id="19" name="Implementierung der Benutzeroberfl&#xE4;che" note="" work="1026432" duration="1026432" start="20060405T170000Z" end="20060525T170000Z" work-start="20060406T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+        <task id="20" name="Grundfunktionalit&#xE4;t" note="" work="288000" duration="288000" start="20060405T170000Z" end="20060419T170000Z" work-start="20060406T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration"/>
+        <task id="21" name="Schnittstellen" note="" work="144000" duration="28800" start="20060419T170000Z" end="20060420T170000Z" work-start="20060420T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+          <predecessors>
+            <predecessor id="1" predecessor-id="20" type="FS"/>
+          </predecessors>
+        </task>
+        <task id="22" name="Integration der Entwicklungswerkzeuge" note="" work="288000" duration="288000" start="20060420T170000Z" end="20060504T170000Z" work-start="20060421T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+          <predecessors>
+            <predecessor id="1" predecessor-id="21" type="FS"/>
+          </predecessors>
+        </task>
+        <task id="23" name="Einstellungsdialog" note="" work="144000" duration="144000" start="20060405T170000Z" end="20060412T170000Z" work-start="20060406T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration"/>
+        <task id="24" name="Syntax-Highlighting" note="" work="144000" duration="144000" start="20060504T170000Z" end="20060511T170000Z" work-start="20060505T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+          <predecessors>
+            <predecessor id="1" predecessor-id="22" type="FS"/>
+          </predecessors>
+        </task>
+        <task id="25" name="Multi-Document-Interface" note="" work="288000" duration="288000" start="20060511T170000Z" end="20060525T170000Z" work-start="20060512T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+          <predecessors>
+            <predecessor id="1" predecessor-id="24" type="FS"/>
+            <predecessor id="1" predecessor-id="23" type="FS"/>
+            <predecessor id="1" predecessor-id="22" type="FS"/>
+            <predecessor id="1" predecessor-id="21" type="FS"/>
+            <predecessor id="1" predecessor-id="20" type="FS"/>
+          </predecessors>
+        </task>
       </task>
-      <task id="17" name="Implementierung des Compilers" note="" work="576000" duration="576000" start="20060406T170000Z" end="20060504T170000Z" work-start="20060407T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+      <task id="26" name="Fertigstellung der Benutzeroberfl&#xE4;che" note="" work="0" start="20060525T170000Z" end="20060525T170000Z" work-start="20060525T170000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
         <predecessors>
-          <predecessor id="1" predecessor-id="14" type="FS"/>
-        </predecessors>
-      </task>
-      <task id="18" name="Fertigstellung der Compilers" note="" work="0" start="20060504T170000Z" end="20060504T170000Z" work-start="20060504T170000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
-        <predecessors>
-          <predecessor id="1" predecessor-id="17" type="FS"/>
+          <predecessor id="1" predecessor-id="19" type="FS"/>
         </predecessors>
       </task>
     </task>
-    <task id="19" name="Erstversion des Brainfuck Studio" note="" work="0" start="20060504T170000Z" end="20060504T170000Z" work-start="20060504T170000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="27" name="Erstversion des Brainfuck Studio" note="" work="0" start="20060525T170000Z" end="20060525T170000Z" work-start="20060525T170000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="12" type="FS"/>
       </predecessors>
     </task>
-    <task id="20" name="Evaluierung" note="" work="432000" duration="432000" start="20060504T170000Z" end="20060525T170000Z" work-start="20060505T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+    <task id="28" name="Evaluierung" note="" work="432000" duration="432000" start="20060525T170000Z" end="20060615T170000Z" work-start="20060526T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
       <predecessors>
-        <predecessor id="1" predecessor-id="19" type="FS"/>
+        <predecessor id="1" predecessor-id="27" type="FS"/>
       </predecessors>
-      <task id="21" name="Beta Test" note="" work="288000" duration="288000" start="20060504T170000Z" end="20060518T170000Z" work-start="20060505T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
-      <task id="22" name="&#xDC;berarbeitung der Software" note="" work="144000" duration="144000" start="20060518T170000Z" end="20060525T170000Z" work-start="20060519T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+      <task id="29" name="Beta Test" note="" work="288000" duration="288000" start="20060525T170000Z" end="20060608T170000Z" work-start="20060526T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+      <task id="30" name="&#xDC;berarbeitung der Software" note="" work="144000" duration="144000" start="20060608T170000Z" end="20060615T170000Z" work-start="20060609T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
         <predecessors>
-          <predecessor id="1" predecessor-id="21" type="FS"/>
+          <predecessor id="1" predecessor-id="29" type="FS"/>
         </predecessors>
       </task>
     </task>
-    <task id="23" name="Dokumentation" note="" work="432000" start="20060504T170000Z" end="20060525T170000Z" work-start="20060505T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-work">
+    <task id="31" name="Dokumentation" note="" work="432000" duration="432000" start="20060415T170000Z" end="20060505T170000Z" work-start="20060417T080000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
       <predecessors>
-        <predecessor id="1" predecessor-id="19" type="FS"/>
+        <predecessor id="1" predecessor-id="19" type="SS" lag="864000"/>
       </predecessors>
     </task>
-    <task id="24" name="Erstellen der Projektpr&#xE4;sentation" note="" work="144000" duration="144000" start="20060525T170000Z" end="20060601T170000Z" work-start="20060526T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
+    <task id="32" name="Erstellen der Projektpr&#xE4;sentation" note="" work="144000" duration="144000" start="20060505T170000Z" end="20060512T170000Z" work-start="20060508T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
       <predecessors>
-        <predecessor id="1" predecessor-id="23" type="FS"/>
+        <predecessor id="1" predecessor-id="31" type="FS"/>
       </predecessors>
     </task>
-    <task id="25" name="Projektabschluss" note="" work="0" start="20060601T170000Z" end="20060601T170000Z" work-start="20060601T170000Z" percent-complete="0" priority="500" type="milestone" scheduling="fixed-work">
+    <task id="33" name="Projektabschluss" note="" work="0" start="20060615T170000Z" end="20060615T170000Z" work-start="20060615T170000Z" percent-complete="0" priority="500" type="milestone" scheduling="fixed-work">
       <predecessors>
-        <predecessor id="1" predecessor-id="24" type="FS"/>
+        <predecessor id="1" predecessor-id="28" type="FS"/>
+        <predecessor id="1" predecessor-id="31" type="FS"/>
+        <predecessor id="1" predecessor-id="32" type="FS"/>
       </predecessors>
     </task>
   </tasks>
@@ -139,41 +177,57 @@
     <group id="1" name="Developers" admin-name="" admin-phone="" admin-email=""/>
   </resource-groups>
   <resources>
-    <resource group="1" id="1" name="Daniel Posch" short-name="dp" type="1" units="1" email="d.posch@inode.at" note="" std-rate="0"/>
-    <resource group="1" id="2" name="Bernhard Kragl" short-name="bkr" type="1" units="1" email="pyron@users.berlios.de" note="" std-rate="0"/>
-    <resource group="1" id="3" name="David Christa" short-name="dch" type="1" units="1" email="davidc@users.berlios.de" note="" std-rate="0"/>
-    <resource group="1" id="4" name="Wolfgang Moser" short-name="wm" type="1" units="1" email="wolmo@users.berlios.de" note="" std-rate="0"/>
+    <resource group="1" id="1" name="Wolfgang Moser" short-name="wm" type="1" units="1" email="wolmo@users.berlios.de" note="" std-rate="0"/>
+    <resource group="1" id="2" name="David Christa" short-name="dch" type="1" units="1" email="davidc@users.berlios.de" note="" std-rate="0"/>
+    <resource group="1" id="3" name="Bernhard Kragl" short-name="bkr" type="1" units="1" email="pyron@users.berlios.de" note="" std-rate="0"/>
+    <resource group="1" id="4" name="Daniel Posch" short-name="dp" type="1" units="1" email="d.posch@inode.at" note="" std-rate="0"/>
   </resources>
   <allocations>
-    <allocation task-id="24" resource-id="1" units="100"/>
-    <allocation task-id="17" resource-id="1" units="50"/>
-    <allocation task-id="15" resource-id="1" units="33"/>
-    <allocation task-id="13" resource-id="1" units="50"/>
-    <allocation task-id="7" resource-id="1" units="100"/>
-    <allocation task-id="6" resource-id="1" units="100"/>
-    <allocation task-id="5" resource-id="1" units="100"/>
+    <allocation task-id="25" resource-id="1" units="50"/>
+    <allocation task-id="24" resource-id="1" units="50"/>
+    <allocation task-id="21" resource-id="1" units="250"/>
+    <allocation task-id="23" resource-id="1" units="50"/>
+    <allocation task-id="22" resource-id="1" units="50"/>
+    <allocation task-id="30" resource-id="1" units="25"/>
+    <allocation task-id="29" resource-id="1" units="25"/>
+    <allocation task-id="19" resource-id="1" units="33"/>
     <allocation task-id="10" resource-id="1" units="25"/>
-    <allocation task-id="21" resource-id="1" units="25"/>
-    <allocation task-id="22" resource-id="1" units="25"/>
-    <allocation task-id="3" resource-id="1" units="100"/>
     <allocation task-id="8" resource-id="1" units="25"/>
-    <allocation task-id="4" resource-id="1" units="100"/>
-    <allocation task-id="23" resource-id="1" units="100"/>
-    <allocation task-id="22" resource-id="2" units="25"/>
-    <allocation task-id="21" resource-id="2" units="25"/>
-    <allocation task-id="15" resource-id="2" units="33"/>
+    <allocation task-id="16" resource-id="2" units="50"/>
+    <allocation task-id="17" resource-id="2" units="50"/>
+    <allocation task-id="14" resource-id="2" units="50"/>
+    <allocation task-id="15" resource-id="2" units="50"/>
+    <allocation task-id="30" resource-id="2" units="25"/>
+    <allocation task-id="29" resource-id="2" units="25"/>
+    <allocation task-id="13" resource-id="2" units="50"/>
     <allocation task-id="10" resource-id="2" units="25"/>
     <allocation task-id="8" resource-id="2" units="25"/>
-    <allocation task-id="22" resource-id="3" units="25"/>
-    <allocation task-id="21" resource-id="3" units="25"/>
-    <allocation task-id="17" resource-id="3" units="50"/>
-    <allocation task-id="13" resource-id="3" units="50"/>
+    <allocation task-id="25" resource-id="3" units="50"/>
+    <allocation task-id="24" resource-id="3" units="50"/>
+    <allocation task-id="21" resource-id="3" units="250"/>
+    <allocation task-id="23" resource-id="3" units="50"/>
+    <allocation task-id="22" resource-id="3" units="50"/>
+    <allocation task-id="30" resource-id="3" units="25"/>
+    <allocation task-id="29" resource-id="3" units="25"/>
+    <allocation task-id="19" resource-id="3" units="33"/>
     <allocation task-id="10" resource-id="3" units="25"/>
     <allocation task-id="8" resource-id="3" units="25"/>
-    <allocation task-id="22" resource-id="4" units="25"/>
-    <allocation task-id="21" resource-id="4" units="25"/>
-    <allocation task-id="15" resource-id="4" units="33"/>
+    <allocation task-id="16" resource-id="4" units="50"/>
+    <allocation task-id="17" resource-id="4" units="50"/>
+    <allocation task-id="14" resource-id="4" units="50"/>
+    <allocation task-id="15" resource-id="4" units="50"/>
+    <allocation task-id="32" resource-id="4" units="100"/>
+    <allocation task-id="19" resource-id="4" units="33"/>
+    <allocation task-id="13" resource-id="4" units="50"/>
+    <allocation task-id="7" resource-id="4" units="100"/>
+    <allocation task-id="6" resource-id="4" units="100"/>
+    <allocation task-id="5" resource-id="4" units="100"/>
     <allocation task-id="10" resource-id="4" units="25"/>
+    <allocation task-id="29" resource-id="4" units="25"/>
+    <allocation task-id="30" resource-id="4" units="25"/>
+    <allocation task-id="3" resource-id="4" units="100"/>
     <allocation task-id="8" resource-id="4" units="25"/>
+    <allocation task-id="4" resource-id="4" units="100"/>
+    <allocation task-id="31" resource-id="4" units="100"/>
   </allocations>
 </project>
