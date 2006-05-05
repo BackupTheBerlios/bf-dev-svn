@@ -735,7 +735,7 @@
             </widget>
            </item>
            <item row="0" column="1" >
-            <widget class="QLineEdit" name="undoLineEdit" >
+            <widget class="QLineEdit" name="compUndoLineEdit" >
              <property name="minimumSize" >
               <size>
                <width>40</width>
@@ -751,7 +751,7 @@
             </widget>
            </item>
            <item row="0" column="0" >
-            <widget class="QLabel" name="undoLabel" >
+            <widget class="QLabel" name="compUndoLabel" >
              <property name="text" >
               <string>Undo</string>
              </property>
