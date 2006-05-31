@@ -1,19 +1,22 @@
 #include <QApplication>
-#include <QMainWindow>
+#include <QtGui>
+#include <unistd.h>
 
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
-{
-	QApplication app(argc, argv);
+{        
+    QApplication app(argc, argv);
+    
+    QSplashScreen *splash = new QSplashScreen(QPixmap("brainfuckStudio.png"));
+    splash->show();
 
-	QMainWindow *main_window = new QMainWindow(0);
+    MainWindow mainWin;
+    mainWin.show();
+    
+    //sleep(2);
+    splash->finish(&mainWin);
+    delete splash;
 
-	Ui_MainWindow auto_design;
-
-	auto_design.setupUi(main_window);
-
-	main_window->show();
-
-	return app.exec();
+    return app.exec();
 }
