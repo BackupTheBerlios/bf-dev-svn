@@ -24,6 +24,7 @@ void MdiChild::newFile()
 
 bool MdiChild::loadFile(const QString &fileName)
 {
+	settings = new QSettings("BFS Team", "Brainfuck Studio");
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
         QMessageBox::warning(this, tr("Error"),
@@ -34,6 +35,10 @@ bool MdiChild::loadFile(const QString &fileName)
     }
 
     QTextStream in(&file);
+	if (settings->value("encoding") == 1)
+		in.setCodec("ISO 8859-15");
+	else
+		in.setCodec("UTF-8");
     QApplication::setOverrideCursor(Qt::WaitCursor);
     setPlainText(in.readAll());
     QApplication::restoreOverrideCursor();
@@ -64,6 +69,7 @@ bool MdiChild::saveAs()
 
 bool MdiChild::saveFile(const QString &fileName)
 {
+	settings = new QSettings("BFS Team", "Brainfuck Studio");
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
         QMessageBox::warning(this, tr("Error"),
@@ -74,6 +80,10 @@ bool MdiChild::saveFile(const QString &fileName)
     }
 
     QTextStream out(&file);
+	if (settings->value("encoding") == 1)
+		out.setCodec("ISO 8859-15");
+	else
+		out.setCodec("UTF-8");
     QApplication::setOverrideCursor(Qt::WaitCursor);
     out << toPlainText();
     QApplication::restoreOverrideCursor();

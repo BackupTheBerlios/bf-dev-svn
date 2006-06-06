@@ -8,146 +8,148 @@ Highlighter::Highlighter(QTextDocument *parent)
 	int temp;
 	settings = new QSettings("BFS Team", "Brainfuck Studio");
 	
-
-    QTextCharFormat gt;
+	if(settings->value("syntaxHighlighting") == Qt::Checked)
+	{
+		QTextCharFormat gt;
+		
+		temp = settings->value(">/font").toInt();
+		setFont(gt, temp);
 	
-	temp = settings->value(">/font").toInt();
-	setFont(gt, temp);
-
-	temp = settings->value(">/style").toInt();
-	setStyle(gt, temp);
-
-	temp = settings->value(">/size").toInt();
-	setSize(gt, temp);
-
-	temp = settings->value(">/color").toInt();
-	setColor(gt, temp);
-
-    mappings[">"] = gt;
+		temp = settings->value(">/style").toInt();
+		setStyle(gt, temp);
 	
-
-    QTextCharFormat lt;
-    
-	temp = settings->value("</font").toInt();
-	setFont(lt, temp);
-
-	temp = settings->value("</style").toInt();
-	setStyle(lt, temp);
-
-	temp = settings->value("</size").toInt();
-	setSize(lt, temp);
-
-	temp = settings->value("</color").toInt();
-	setColor(lt, temp);
+		temp = settings->value(">/size").toInt();
+		setSize(gt, temp);
 	
-    mappings["<"] = lt;
-    
+		temp = settings->value(">/color").toInt();
+		setColor(gt, temp);
 	
-    QTextCharFormat plus;
-    
-	temp = settings->value("+/font").toInt();
-	setFont(plus, temp);
-
-	temp = settings->value("+/style").toInt();
-	setStyle(plus, temp);
-
-	temp = settings->value("+/size").toInt();
-	setSize(plus, temp);
-
-	temp = settings->value("+/color").toInt();
-	setColor(plus, temp);
+		mappings[">"] = gt;
+		
 	
-    mappings["\\+"] = plus;
-    
+		QTextCharFormat lt;
+		
+		temp = settings->value("</font").toInt();
+		setFont(lt, temp);
 	
-    QTextCharFormat minus;
-    
-	temp = settings->value("-/font").toInt();
-	setFont(minus, temp);
-
-	temp = settings->value("-/style").toInt();
-	setStyle(minus, temp);
-
-	temp = settings->value("-/size").toInt();
-	setSize(minus, temp);
-
-	temp = settings->value("-/color").toInt();
-	setColor(minus, temp);
+		temp = settings->value("</style").toInt();
+		setStyle(lt, temp);
 	
-    mappings["\\-"] = minus;
-    
+		temp = settings->value("</size").toInt();
+		setSize(lt, temp);
 	
-    QTextCharFormat point;
-    
-	temp = settings->value("./font").toInt();
-	setFont(point, temp);
-
-	temp = settings->value("./style").toInt();
-	setStyle(point, temp);
-
-	temp = settings->value("./size").toInt();
-	setSize(point, temp);
-
-	temp = settings->value("./color").toInt();
-	setColor(point, temp);
+		temp = settings->value("</color").toInt();
+		setColor(lt, temp);
+		
+		mappings["<"] = lt;
+		
+		
+		QTextCharFormat plus;
+		
+		temp = settings->value("+/font").toInt();
+		setFont(plus, temp);
 	
-    mappings["\\."] = point;
-    
+		temp = settings->value("+/style").toInt();
+		setStyle(plus, temp);
 	
-    QTextCharFormat comma;
-    
-	temp = settings->value(",/font").toInt();
-	setFont(comma, temp);
-
-	temp = settings->value(",/style").toInt();
-	setStyle(comma, temp);
-
-	temp = settings->value(",/size").toInt();
-	setSize(comma, temp);
-
-	temp = settings->value(",/color").toInt();
-	setColor(comma, temp);
+		temp = settings->value("+/size").toInt();
+		setSize(plus, temp);
 	
-    mappings["\\,"] = comma;
-    
+		temp = settings->value("+/color").toInt();
+		setColor(plus, temp);
+		
+		mappings["\\+"] = plus;
+		
+		
+		QTextCharFormat minus;
+		
+		temp = settings->value("-/font").toInt();
+		setFont(minus, temp);
 	
-    QTextCharFormat openBracket;
-    
-	temp = settings->value("[/font").toInt();
-	setFont(openBracket, temp);
-
-	temp = settings->value("[/style").toInt();
-	setStyle(openBracket, temp);
-
-	temp = settings->value("[/size").toInt();
-	setSize(openBracket, temp);
-
-	temp = settings->value("[/color").toInt();
-	setColor(openBracket, temp);
+		temp = settings->value("-/style").toInt();
+		setStyle(minus, temp);
 	
-    mappings["\\["] = openBracket;
-    
+		temp = settings->value("-/size").toInt();
+		setSize(minus, temp);
 	
-    QTextCharFormat closedBracket;
-    
-	temp = settings->value("]/font").toInt();
-	setFont(closedBracket, temp);
-
-	temp = settings->value("]/style").toInt();
-	setStyle(closedBracket, temp);
-
-	temp = settings->value("]/size").toInt();
-	setSize(closedBracket, temp);
-
-	temp = settings->value("]/color").toInt();
-	setColor(closedBracket, temp);
+		temp = settings->value("-/color").toInt();
+		setColor(minus, temp);
+		
+		mappings["\\-"] = minus;
+		
+		
+		QTextCharFormat point;
+		
+		temp = settings->value("./font").toInt();
+		setFont(point, temp);
 	
-    mappings["\\]"] = closedBracket;
-    
+		temp = settings->value("./style").toInt();
+		setStyle(point, temp);
 	
-    QTextCharFormat comment;
-    comment.setForeground(Qt::gray);
-    mappings["[^><\\+\\-\\.\\,\\[\\]]"] = comment;
+		temp = settings->value("./size").toInt();
+		setSize(point, temp);
+	
+		temp = settings->value("./color").toInt();
+		setColor(point, temp);
+		
+		mappings["\\."] = point;
+		
+		
+		QTextCharFormat comma;
+		
+		temp = settings->value(",/font").toInt();
+		setFont(comma, temp);
+	
+		temp = settings->value(",/style").toInt();
+		setStyle(comma, temp);
+	
+		temp = settings->value(",/size").toInt();
+		setSize(comma, temp);
+	
+		temp = settings->value(",/color").toInt();
+		setColor(comma, temp);
+		
+		mappings["\\,"] = comma;
+		
+		
+		QTextCharFormat openBracket;
+		
+		temp = settings->value("[/font").toInt();
+		setFont(openBracket, temp);
+	
+		temp = settings->value("[/style").toInt();
+		setStyle(openBracket, temp);
+	
+		temp = settings->value("[/size").toInt();
+		setSize(openBracket, temp);
+	
+		temp = settings->value("[/color").toInt();
+		setColor(openBracket, temp);
+		
+		mappings["\\["] = openBracket;
+		
+		
+		QTextCharFormat closedBracket;
+		
+		temp = settings->value("]/font").toInt();
+		setFont(closedBracket, temp);
+	
+		temp = settings->value("]/style").toInt();
+		setStyle(closedBracket, temp);
+	
+		temp = settings->value("]/size").toInt();
+		setSize(closedBracket, temp);
+	
+		temp = settings->value("]/color").toInt();
+		setColor(closedBracket, temp);
+		
+		mappings["\\]"] = closedBracket;
+    	
+		
+		QTextCharFormat comment;
+		comment.setForeground(Qt::gray);
+		mappings["[^><\\+\\-\\.\\,\\[\\]]"] = comment;
+	}
 }
 
 void Highlighter::highlightBlock(const QString &text)
@@ -166,14 +168,14 @@ void Highlighter::highlightBlock(const QString &text)
 void Highlighter::setFont(QTextCharFormat &c, int &v)
 {
 	if(v == 0)
-		c.setFont(QFont("Courier"));
+		c.setFontFamily("Courier");
 }
 
 void Highlighter::setStyle(QTextCharFormat &c, int &v)
 {
 	if(v == 0)
 	{
-		c.setFontWeight(QFont::Normal);
+		c.setFontWeight(QFont::StyleNormal);
 		c.setFontItalic(false);
 	}
 	else if(v == 1)
@@ -183,7 +185,7 @@ void Highlighter::setStyle(QTextCharFormat &c, int &v)
 	}
 	else if(v == 2)
 	{
-		c.setFontWeight(QFont::Normal);
+		c.setFontWeight(QFont::StyleNormal);
 		c.setFontItalic(true);
 	}
 	else

@@ -3,6 +3,8 @@
 
 #include <QTextEdit>
 
+class QSettings;
+
 class MdiChild : public QTextEdit
 {
     Q_OBJECT
@@ -31,6 +33,7 @@ private:
 
     QString curFile;
     bool isUntitled;
+	QSettings *settings;
 };
 
 #endif

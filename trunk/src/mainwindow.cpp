@@ -8,6 +8,7 @@
 
 MainWindow::MainWindow()
 {
+	QApplication::setStyle(new QPlastiqueStyle());
     centralWidget = new QWidget(this);
     QVBoxLayout *vboxLayoutMain = new QVBoxLayout(centralWidget);
     
@@ -58,7 +59,7 @@ void MainWindow::newFile()
     child->newFile();
     child->show();
     
-    highlighter = new Highlighter(child->document());
+	highlighter = new Highlighter(child->document());
 }
 
 void MainWindow::openRecentFile()
@@ -100,7 +101,7 @@ void MainWindow::open(QString fileName)
 	    setCurrentFile(fileName);
             statusBar()->showMessage(tr("File loaded"), 2000);
             child->show();
-	    highlighter = new Highlighter(child->document());
+			highlighter = new Highlighter(child->document());
         } else {
             child->close();
         }
@@ -231,10 +232,10 @@ void MainWindow::showSettings()
     settingsDialog = new SettingsDialog(this);
     settingsDialog->exec();
 	if(settingsDialog->result() == QDialog::Accepted)
-		foreach (QWidget *window, workspace->windowList()) {
-			MdiChild *mdiChild = qobject_cast<MdiChild *>(window);
-			highlighter = new Highlighter(mdiChild->document());
-		}
+			foreach (QWidget *window, workspace->windowList()) {
+				MdiChild *mdiChild = qobject_cast<MdiChild *>(window);
+				highlighter = new Highlighter(mdiChild->document());
+			}
 }
 
 void MainWindow::updateRecentFileActions()
@@ -629,6 +630,7 @@ void MainWindow::writeSettings()
 {
     settings->setValue("pos", pos());
 	settings->setValue("windowSize", size());
+	settings->sync();
 }
 
 void MainWindow::setCurrentFile(const QString &fileName)
