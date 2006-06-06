@@ -230,6 +230,11 @@ void MainWindow::showSettings()
 {
     settingsDialog = new SettingsDialog(this);
     settingsDialog->exec();
+	if(settingsDialog->result() == QDialog::Accepted)
+		foreach (QWidget *window, workspace->windowList()) {
+			MdiChild *mdiChild = qobject_cast<MdiChild *>(window);
+			highlighter = new Highlighter(mdiChild->document());
+		}
 }
 
 void MainWindow::updateRecentFileActions()
@@ -615,7 +620,7 @@ void MainWindow::createDesign()
 void MainWindow::readSettings()
 {
     QPoint pos = settings->value("pos", QPoint(200, 200)).toPoint();
-    QSize size = settings->value("size", QSize(400, 400)).toSize();
+    QSize size = settings->value("windowSize", QSize(400, 400)).toSize();
     move(pos);
     resize(size);
 }
@@ -623,7 +628,7 @@ void MainWindow::readSettings()
 void MainWindow::writeSettings()
 {
     settings->setValue("pos", pos());
-    settings->setValue("size", size());
+	settings->setValue("windowSize", size());
 }
 
 void MainWindow::setCurrentFile(const QString &fileName)

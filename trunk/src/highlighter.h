@@ -7,6 +7,7 @@
 #include <QTextCharFormat>
 
 class QTextDocument;
+class QSettings;
 
 class Highlighter : public QSyntaxHighlighter
 {
@@ -20,6 +21,12 @@ protected:
 
 private:
     QHash<QString,QTextCharFormat> mappings;
+	void setFont(QTextCharFormat &c, int &v);
+	void setStyle(QTextCharFormat &c, int &v);
+	void setSize(QTextCharFormat &c, int &v);
+	void setColor(QTextCharFormat &c, int &v);
+	
+	QSettings *settings;
 };
 
 #endif
