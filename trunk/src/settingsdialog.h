@@ -56,7 +56,11 @@ class SettingsDialog : public QDialog
 
 	public:
 		SettingsDialog(QWidget *parent = 0);
-
+	
+	private slots:
+		void acceptSettings();
+		void rejectSettings();
+	
 	private:
 		QTabWidget *tabWidget;
 };

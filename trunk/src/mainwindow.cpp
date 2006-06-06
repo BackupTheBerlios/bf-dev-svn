@@ -3,6 +3,8 @@
 #include "mainwindow.h"
 #include "mdichild.h"
 #include "finddialog.h"
+#include "settingsdialog.h"
+#include "highlighter.h"
 
 MainWindow::MainWindow()
 {
@@ -55,6 +57,8 @@ void MainWindow::newFile()
     MdiChild *child = createMdiChild();
     child->newFile();
     child->show();
+    
+    highlighter = new Highlighter(child->document());
 }
 
 void MainWindow::openRecentFile()
@@ -96,6 +100,7 @@ void MainWindow::open(QString fileName)
 	    setCurrentFile(fileName);
             statusBar()->showMessage(tr("File loaded"), 2000);
             child->show();
+	    highlighter = new Highlighter(child->document());
         } else {
             child->close();
         }
@@ -219,6 +224,12 @@ void MainWindow::aboutBfs()
                                 "Copyright 2006 BF-dev\n\n"
                                 "The whole application is under GPL\n\n"
                                 "For technical support, see http://bf-dev.berlios.de/\n");
+}
+
+void MainWindow::showSettings()
+{
+    settingsDialog = new SettingsDialog(this);
+    settingsDialog->exec();
 }
 
 void MainWindow::updateRecentFileActions()
@@ -398,7 +409,7 @@ void MainWindow::createActions()
     connect(actionOptimization, SIGNAL(triggered()), this, SLOT(optimization()));
 
     actionSettings = new QAction(tr("&Settings"), this);
-    connect(actionSettings, SIGNAL(triggered()), this, SLOT(settings()));
+    connect(actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));
 
     actionNextStep = new QAction(tr("&Next Step"), this);
     connect(actionNextStep, SIGNAL(triggered()), this, SLOT(nextStep()));

@@ -11,6 +11,8 @@ class QSettings;
 class QSpacerItem;
 class QTextEdit;
 class QTabWidget;
+class SettingsDialog;
+class Highlighter;
 
 class MainWindow : public QMainWindow
 {
@@ -42,6 +44,7 @@ private slots:
     void deselect();
     void overwriteMode();
     void aboutBfs();
+    void showSettings();
     void updateMenus();
     void updateWindowMenu();
     MdiChild *createMdiChild();
@@ -63,6 +66,8 @@ private:
     enum { maxRecentFiles = 5 };
     
     FindDialog *findDialog;
+    SettingsDialog *settingsDialog;
+    Highlighter *highlighter;
 
     QWorkspace *workspace;
     
