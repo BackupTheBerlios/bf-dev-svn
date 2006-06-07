@@ -121,7 +121,7 @@ class SettingsDialog : public QDialog
 		QHBoxLayout *hboxLayoutButtons;
 		QVBoxLayout *vboxLayoutMain;
 		QSettings *settings;
-		int tempSettings[8][4];
+		int tempSettings[9][4];
 		QLineEdit *actLineEdit;
 };
 
