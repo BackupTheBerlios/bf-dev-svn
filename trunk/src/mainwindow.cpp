@@ -357,11 +357,13 @@ void MainWindow::compile()
 	
 	std::string bfCode = activeMdiChild()->toPlainText().toStdString();
 	
+	textEditCompiler->clear();
+	textEditCompiler->append("Compiling...\n");
+	
 	Compiler c(*new BrainfuckCode(bfCode),
 		filePath.toStdString(),
 		*new WindowsGCCArchitecture());
 	
-	textEditCompiler->clear();
 	int hasError = 0;
 	
 	try
@@ -374,7 +376,7 @@ void MainWindow::compile()
 		{
 			QString error = QString("Error: ");
 			error = error.append(QString((char *)e.getList().at(i).c_str()));
-			error = error.append("\n");
+			//error = error.append("\n");
 			textEditCompiler->append(error);
 		}
 		hasError = 1;

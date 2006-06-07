@@ -147,7 +147,19 @@ Highlighter::Highlighter(QTextDocument *parent)
     	
 		
 		QTextCharFormat comment;
-		comment.setForeground(Qt::gray);
+		
+		temp = settings->value("comment/font").toInt();
+		setFont(comment, temp);
+	
+		temp = settings->value("comment/style").toInt();
+		setStyle(comment, temp);
+	
+		temp = settings->value("comment/size").toInt();
+		setSize(comment, temp);
+	
+		temp = settings->value("comment/color").toInt();
+		setColor(comment, temp);
+		
 		mappings["[^><\\+\\-\\.\\,\\[\\]]"] = comment;
 	}
 }
