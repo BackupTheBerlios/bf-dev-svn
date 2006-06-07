@@ -47,6 +47,7 @@ private slots:
     void showSettings();
     void updateMenus();
     void updateWindowMenu();
+	void compile();
     MdiChild *createMdiChild();
 
 private:

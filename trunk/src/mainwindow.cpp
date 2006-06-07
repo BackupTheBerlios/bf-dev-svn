@@ -6,6 +6,13 @@
 #include "settingsdialog.h"
 #include "highlighter.h"
 
+#include <string>
+
+using namespace std;
+
+#include "compiler/Compiler.h"
+#include "compiler/WindowsGCCArchitecture.h"
+
 MainWindow::MainWindow()
 {
 	QApplication::setStyle(new QPlastiqueStyle());
@@ -338,6 +345,46 @@ void MainWindow::updateWindowMenu()
     }
 }
 
+void MainWindow::compile()
+{
+	QString filePath = settings->value("workspace", "").toString();
+	
+	if(filePath.isEmpty())
+		filePath = activeMdiChild()->userFriendlyFileDir();
+			
+	filePath = filePath.append("/");
+	filePath = filePath.append(activeMdiChild()->userFriendlyFileBaseName());
+	
+	std::string bfCode = activeMdiChild()->toPlainText().toStdString();
+	
+	Compiler c(*new BrainfuckCode(bfCode),
+		filePath.toStdString(),
+		*new WindowsGCCArchitecture());
+	
+	textEditCompiler->clear();
+	int hasError = 0;
+	
+	try
+	{
+		c.compile();
+	}
+	catch (InvalidCode &e)
+	{
+		for (int i = 0; i < e.getList().size(); ++i)
+		{
+			QString error = QString("Error: ");
+			error = error.append(QString((char *)e.getList().at(i).c_str()));
+			error = error.append("\n");
+			textEditCompiler->append(error);
+		}
+		hasError = 1;
+	}
+	
+	if(!hasError)
+		textEditCompiler->append(QString("Compiling done successfully."));
+	
+}
+
 MdiChild *MainWindow::createMdiChild()
 {
     MdiChild *child = new MdiChild;
@@ -399,9 +446,11 @@ void MainWindow::createActions()
 
     actionCloseAll = new QAction(tr("Close A&ll"), this);
     connect(actionCloseAll, SIGNAL(triggered()), workspace, SLOT(closeAllWindows()));
+	connect(actionCloseAll, SIGNAL(triggered()), textEditCompiler, SLOT(clear()));
 
     actionCloseAllOthers = new QAction(tr("Close All &Others"), this);
     connect(actionCloseAllOthers, SIGNAL(triggered()), this, SLOT(closeAllOthers()));
+	connect(actionCloseAllOthers, SIGNAL(triggered()), textEditCompiler, SLOT(clear()));
 
     actionExit = new QAction(QIcon(QString::fromUtf8("icons/exit.png")), tr("E&xit"), this);
     connect(actionExit, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
@@ -440,6 +489,7 @@ void MainWindow::createActions()
 
     actionClose = new QAction(QIcon(QString::fromUtf8("icons/close.png")), tr("&Close"), this);
     connect(actionClose, SIGNAL(triggered()), workspace, SLOT(closeActiveWindow()));
+	connect(actionClose, SIGNAL(triggered()), textEditCompiler, SLOT(clear()));
 
     actionUndo = new QAction(QIcon(QString::fromUtf8("icons/undo.png")), tr("&Undo"), this);
     connect(actionUndo, SIGNAL(triggered()), this, SLOT(undo()));

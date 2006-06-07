@@ -97,6 +97,16 @@ QString MdiChild::userFriendlyCurrentFile()
     return strippedName(curFile);
 }
 
+QString MdiChild::userFriendlyFileDir()
+{
+	return absoluteDirectory(curFile);
+}
+
+QString MdiChild::userFriendlyFileBaseName()
+{
+	return fileBaseName(curFile);
+}
+
 void MdiChild::closeEvent(QCloseEvent *event)
 {
     if (maybeSave()) {
@@ -141,4 +151,14 @@ void MdiChild::setCurrentFile(const QString &fileName)
 QString MdiChild::strippedName(const QString &fullFileName)
 {
     return QFileInfo(fullFileName).fileName();
+}
+
+QString MdiChild::absoluteDirectory(const QString &fullFileName)
+{
+	return QFileInfo(fullFileName).absoluteDir().absolutePath();
+}
+
+QString MdiChild::fileBaseName(const QString &fullFileName)
+{
+	return QFileInfo(fullFileName).baseName();
 }
