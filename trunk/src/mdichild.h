@@ -22,6 +22,10 @@ public:
 	QString userFriendlyFileBaseName();
     QString currentFile() { return curFile; }
     void setCurrentFile(const QString &fileName);
+	bool isCompiled();
+	
+public slots:
+	void setCompiled(const bool compiled);
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -38,6 +42,7 @@ private:
     QString curFile;
     bool isUntitled;
 	QSettings *settings;
+	bool compiled;
 };
 
 #endif

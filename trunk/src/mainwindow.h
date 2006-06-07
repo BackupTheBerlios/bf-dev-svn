@@ -48,6 +48,7 @@ private slots:
     void updateMenus();
     void updateWindowMenu();
 	void compile();
+	void run();
     MdiChild *createMdiChild();
 
 private:
@@ -56,10 +57,12 @@ private:
     void createToolBars();
     void createStatusBar();
     void createDesign();
+	void setShortcuts();
     void readSettings();
     void writeSettings();
     void updateRecentFileActions();
     void setCurrentFile(const QString &fileName);
+	QString actualFilePath();
     QString strippedName(const QString &fullFileName);
     MdiChild *activeMdiChild();
     MdiChild *findMdiChild(const QString &fileName);
@@ -121,6 +124,7 @@ private:
     QAction *actionCopy;
     QAction *actionPaste;
     QAction *actionCompile;
+	QAction *actionRun;
     QAction *actionTile;
     QAction *actionCascade;
     QAction *actionArrange;

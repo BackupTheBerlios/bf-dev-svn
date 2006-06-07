@@ -107,7 +107,7 @@ class SettingsDialog : public QDialog
 		QLineEdit *pasteLineEdit;
 		QLineEdit *selectLineEdit;
 		QLineEdit *findLineEdit;
-		QLineEdit *compUndoLineEdit;
+		QLineEdit *compileLineEdit;
 		QLineEdit *interpretLineEdit;
 		QLineEdit *startLineEdit;
 		QLineEdit *nextStepLineEdit;

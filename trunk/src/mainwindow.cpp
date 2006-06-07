@@ -7,8 +7,10 @@
 #include "highlighter.h"
 
 #include <string>
+#include <cstdio>
 
 using namespace std;
+#include <iostream>
 
 #include "compiler/Compiler.h"
 #include "compiler/WindowsGCCArchitecture.h"
@@ -40,6 +42,7 @@ MainWindow::MainWindow()
 	settings->setValue("recentFileList", QStringList());
     
     createActions();
+	setShortcuts();
     createMenus();
     createToolBars();
     createStatusBar();
@@ -65,6 +68,8 @@ void MainWindow::newFile()
     MdiChild *child = createMdiChild();
     child->newFile();
     child->show();
+	connect(child, SIGNAL(textChanged()),
+			child, SLOT(setCompiled(false)));
     
 	highlighter = new Highlighter(child->document());
 }
@@ -96,20 +101,24 @@ void MainWindow::open(QString fileName)
     if (fileName.isEmpty())
     fileName = QFileDialog::getOpenFileName(this, "Open",
 					    ".", "Brainfuck Files (*.b);;All Files (*)");
-    if (!fileName.isEmpty()) {
+    if (!fileName.isEmpty())
+	{
         MdiChild *existing = findMdiChild(fileName);
-        if (existing) {
+        if (existing)
+		{
             workspace->setActiveWindow(existing);
             return;
         }
 
         MdiChild *child = createMdiChild();
-        if (child->loadFile(fileName)) {
-	    setCurrentFile(fileName);
+        if (child->loadFile(fileName))
+		{
+	    	setCurrentFile(fileName);
             statusBar()->showMessage(tr("File loaded"), 2000);
             child->show();
 			highlighter = new Highlighter(child->document());
-        } else {
+        } else
+		{
             child->close();
         }
     }
@@ -239,10 +248,13 @@ void MainWindow::showSettings()
     settingsDialog = new SettingsDialog(this);
     settingsDialog->exec();
 	if(settingsDialog->result() == QDialog::Accepted)
-			foreach (QWidget *window, workspace->windowList()) {
-				MdiChild *mdiChild = qobject_cast<MdiChild *>(window);
-				highlighter = new Highlighter(mdiChild->document());
-			}
+	{
+		foreach (QWidget *window, workspace->windowList()) {
+			MdiChild *mdiChild = qobject_cast<MdiChild *>(window);
+			highlighter = new Highlighter(mdiChild->document());
+		}
+		setShortcuts();
+	}
 }
 
 void MainWindow::updateRecentFileActions()
@@ -287,6 +299,7 @@ void MainWindow::updateMenus()
     actionRedo->setEnabled(hasMdiChild);
     actionPaste->setEnabled(hasMdiChild);
     actionCompile->setEnabled(hasMdiChild);
+	actionRun->setEnabled(hasMdiChild);
     actionTile->setEnabled(hasMdiChild);
     actionCascade->setEnabled(hasMdiChild);
     actionArrange->setEnabled(hasMdiChild);
@@ -345,20 +358,36 @@ void MainWindow::updateWindowMenu()
     }
 }
 
+void MainWindow::setShortcuts()
+{
+	actionNew->setShortcut(QKeySequence(settings->value("newShortcut").toString()));
+	actionOpen->setShortcut(QKeySequence(settings->value("openShortcut").toString()));
+	actionSave->setShortcut(QKeySequence(settings->value("saveShortcut").toString()));
+	actionPrint->setShortcut(QKeySequence(settings->value("printShortcut").toString()));
+	actionClose->setShortcut(QKeySequence(settings->value("closeShortcut").toString()));
+	actionUndo->setShortcut(QKeySequence(settings->value("undoShortcut").toString()));
+	actionRedo->setShortcut(QKeySequence(settings->value("redoShortcut").toString()));
+	actionCut->setShortcut(QKeySequence(settings->value("cutShortcut").toString()));
+	actionCopy->setShortcut(QKeySequence(settings->value("copyShortcut").toString()));
+	actionPaste->setShortcut(QKeySequence(settings->value("pasteShortcut").toString()));
+	actionSelectAll->setShortcut(QKeySequence(settings->value("selectShortcut").toString()));
+	actionFind->setShortcut(QKeySequence(settings->value("findShortcut").toString()));
+	actionCompile->setShortcut(QKeySequence(settings->value("compileShortcut").toString()));
+	actionInterpretOnly->setShortcut(QKeySequence(settings->value("interpretShortcut").toString()));
+	actionStartDebug->setShortcut(QKeySequence(settings->value("startShortcut").toString()));
+	actionNextStep->setShortcut(QKeySequence(settings->value("nextStepShortcut").toString()));
+	actionBfsHandbook->setShortcut(QKeySequence(settings->value("handbookShortcut").toString()));
+}
+
 void MainWindow::compile()
 {
-	QString filePath = settings->value("workspace", "").toString();
-	
-	if(filePath.isEmpty())
-		filePath = activeMdiChild()->userFriendlyFileDir();
-			
-	filePath = filePath.append("/");
-	filePath = filePath.append(activeMdiChild()->userFriendlyFileBaseName());
-	
-	std::string bfCode = activeMdiChild()->toPlainText().toStdString();
-	
 	textEditCompiler->clear();
 	textEditCompiler->append("Compiling...\n");
+	
+	
+	QString filePath = actualFilePath();
+	
+	std::string bfCode = activeMdiChild()->toPlainText().toStdString();
 	
 	Compiler c(*new BrainfuckCode(bfCode),
 		filePath.toStdString(),
@@ -376,15 +405,27 @@ void MainWindow::compile()
 		{
 			QString error = QString("Error: ");
 			error = error.append(QString((char *)e.getList().at(i).c_str()));
-			//error = error.append("\n");
 			textEditCompiler->append(error);
 		}
 		hasError = 1;
 	}
 	
 	if(!hasError)
+	{
 		textEditCompiler->append(QString("Compiling done successfully."));
+		activeMdiChild()->setCompiled(true);
+	}
 	
+}
+
+void MainWindow::run()
+{
+	if(!activeMdiChild()->isCompiled())
+		compile();
+
+	QString cmd(actualFilePath());
+	system(cmd.toStdString().c_str());
+
 }
 
 MdiChild *MainWindow::createMdiChild()
@@ -398,6 +439,21 @@ MdiChild *MainWindow::createMdiChild()
             actionCopy, SLOT(setEnabled(bool)));
 
     return child;
+}
+
+QString MainWindow::actualFilePath()
+{
+	QString filePath = settings->value("workspace", "").toString();
+	
+	if (filePath.isEmpty())
+		filePath = activeMdiChild()->userFriendlyFileDir();
+	else if (!QDir(filePath).exists())
+		filePath = activeMdiChild()->userFriendlyFileDir();
+				
+	filePath = filePath.append("/");
+	filePath = filePath.append(activeMdiChild()->userFriendlyFileBaseName());
+	
+	return filePath;
 }
 
 void MainWindow::createActions()
@@ -508,8 +564,12 @@ void MainWindow::createActions()
     actionPaste = new QAction(QIcon(QString::fromUtf8("icons/paste.png")), tr("&Paste"), this);
     connect(actionPaste, SIGNAL(triggered()), this, SLOT(paste()));
 
-    actionCompile = new QAction(QIcon(QString::fromUtf8("icons/compile.png")), tr("&Compile"), this);
-    connect(actionCompile, SIGNAL(triggered()), this, SLOT(compile()));
+    actionCompile = new QAction(QIcon(QString::fromUtf8("icons/compile.png")),
+								tr("&Compile"), this);
+	connect(actionCompile, SIGNAL(triggered()), this, SLOT(compile()));
+	
+	actionRun = new QAction(tr("&Run"), this);
+	connect(actionRun, SIGNAL(triggered()), this, SLOT(run()));
 
     actionTile = new QAction(tr("&Tile"), this);
     connect(actionTile, SIGNAL(triggered()), workspace, SLOT(tile()));
@@ -533,7 +593,9 @@ void MainWindow::createActions()
 void MainWindow::createMenus()
 {
     menuFile = menuBar()->addMenu(tr("&File"));
-    
+	menuFile->addAction(actionNew);
+	menuFile->addSeparator();
+	
     menuRecentFiles = menuFile->addMenu(tr("&Recent Files"));
     for (int i = 0; i < maxRecentFiles; ++i)
             menuRecentFiles->addAction(actionRecentFiles[i]);
@@ -572,9 +634,10 @@ void MainWindow::createMenus()
     menuEdit->addAction(actionSettings);
 
     menuCompile = menuBar()->addMenu(tr("&Compile"));
+	menuCompile->addAction(actionRun);
+	menuCompile->addSeparator();
     menuCompile->addAction(actionCompile);
     menuCompile->addAction(actionOptimization);
-    
     menuCompile->addSeparator();
     menuCompile->addAction(actionInterpretOnly);    
 

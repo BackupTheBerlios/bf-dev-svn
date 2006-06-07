@@ -29,12 +29,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	: QDialog(parent)
 {
 	QApplication::setStyle(new QPlastiqueStyle());
-	resize(QSize(420, 320).expandedTo(minimumSizeHint()));
-	setMinimumSize(QSize(420, 320));
-	setMaximumSize(QSize(420, 320));
+	resize(QSize(465 , 320).expandedTo(minimumSizeHint()));
+	setMinimumSize(QSize(465 , 320).expandedTo(minimumSizeHint()));
+	setMaximumSize(QSize(465 , 320).expandedTo(minimumSizeHint()));
 	
 	tabWidget = new QTabWidget;
-	tabWidget->setMaximumSize(QSize(16777215, 16777215));
 	
 	editorTab = new QWidget();
 	compilerTab = new QWidget();
@@ -111,7 +110,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	hboxLayoutFontsColorsLine2->addWidget(new QLabel(tr("Font")));
 	fontComboBox = new QComboBox;
 	fontComboBox->addItem(QApplication::translate("SettingsDialog", "Courier New", 0, QApplication::UnicodeUTF8));
-	fontComboBox->setMinimumSize(QSize(89, 0));
 	connect(fontComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeFontSettings(int)));
 	hboxLayoutFontsColorsLine2->addWidget(fontComboBox);
 	hboxLayoutFontsColorsLine2->addItem(new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum));
@@ -121,7 +119,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	styleComboBox->addItem(QApplication::translate("SettingsDialog", "fett", 0, QApplication::UnicodeUTF8));
 	styleComboBox->addItem(QApplication::translate("SettingsDialog", "kursiv", 0, QApplication::UnicodeUTF8));
 	styleComboBox->addItem(QApplication::translate("SettingsDialog", "fett kursiv", 0, QApplication::UnicodeUTF8));
-	styleComboBox->setMinimumSize(QSize(80, 0));
 	connect(styleComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeStyleSettings(int)));
 	hboxLayoutFontsColorsLine2->addWidget(styleComboBox);
 	hboxLayoutFontsColorsLine2->addItem(new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum));
@@ -130,7 +127,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	sizeComboBox->addItem(QApplication::translate("SettingsDialog", "10", 0, QApplication::UnicodeUTF8));
 	sizeComboBox->addItem(QApplication::translate("SettingsDialog", "11", 0, QApplication::UnicodeUTF8));
 	sizeComboBox->addItem(QApplication::translate("SettingsDialog", "12", 0, QApplication::UnicodeUTF8));
-	sizeComboBox->setMinimumSize(QSize(40, 0));
 	connect(sizeComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeSizeSettings(int)));
 	hboxLayoutFontsColorsLine2->addWidget(sizeComboBox);
 	hboxLayoutFontsColorsLine2->addItem(new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum));
@@ -143,7 +139,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	colorComboBox->addItem(QApplication::translate("SettingsDialog", "Blue", 0, QApplication::UnicodeUTF8));
 	colorComboBox->addItem(QApplication::translate("SettingsDialog", "Green", 0, QApplication::UnicodeUTF8));
 	colorComboBox->addItem(QApplication::translate("SettingsDialog", "Grey", 0, QApplication::UnicodeUTF8));
-	colorComboBox->setMinimumSize(QSize(60, 0));
 	connect(colorComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeColorSettings(int)));
 	hboxLayoutFontsColorsLine3->addWidget(colorComboBox);
 	hboxLayoutFontsColorsLine3->addItem(new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum));
@@ -232,162 +227,152 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	//----------------------------------------------------
 	
 	fileGroupBox->setGeometry(QRect(10, 0, 95, 160));
-	fileGroupBox->setMinimumSize(QSize(95, 160));
-	fileGroupBox->setMaximumSize(QSize(95, 160));
 	gridLayoutFileGroupBox->setSpacing(6);
 	gridLayoutFileGroupBox->setMargin(9);
 	gridLayoutFileGroupBox->addWidget(new QLabel(tr("New")), 0, 0, 1, 1);
 	newLineEdit = new QLineEdit;
-	newLineEdit->setMinimumSize(QSize(40, 20));
-	newLineEdit->setMaximumSize(QSize(40, 20));
+	newLineEdit->setMinimumSize(QSize(55, 20));
+	newLineEdit->setMaximumSize(QSize(55, 20));
 	newLineEdit->setAccessibleName("newShortcut");
 	connect(newLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutFileGroupBox->addWidget(newLineEdit, 0, 1, 1, 1);
+	gridLayoutFileGroupBox->addWidget(newLineEdit, 0, 1, 1, 1, Qt::AlignRight);
 	gridLayoutFileGroupBox->addWidget(new QLabel(tr("Open")), 1, 0, 1, 1);
 	openLineEdit = new QLineEdit;
-	openLineEdit->setMinimumSize(QSize(40, 20));
-	openLineEdit->setMaximumSize(QSize(40, 20));
+	openLineEdit->setMinimumSize(QSize(55, 20));
+	openLineEdit->setMaximumSize(QSize(55, 20));
 	openLineEdit->setAccessibleName("openShortcut");
 	connect(openLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutFileGroupBox->addWidget(openLineEdit, 1, 1, 1, 1);
+	gridLayoutFileGroupBox->addWidget(openLineEdit, 1, 1, 1, 1, Qt::AlignRight);
 	gridLayoutFileGroupBox->addWidget(new QLabel(tr("Save")), 2, 0, 1, 1);
 	saveLineEdit = new QLineEdit;
-	saveLineEdit->setMinimumSize(QSize(40, 20));
-	saveLineEdit->setMaximumSize(QSize(40, 20));
+	saveLineEdit->setMinimumSize(QSize(55, 20));
+	saveLineEdit->setMaximumSize(QSize(55, 20));
 	saveLineEdit->setAccessibleName("saveShortcut");
 	connect(saveLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutFileGroupBox->addWidget(saveLineEdit, 2, 1, 1, 1);
+	gridLayoutFileGroupBox->addWidget(saveLineEdit, 2, 1, 1, 1, Qt::AlignRight);
 	gridLayoutFileGroupBox->addWidget(new QLabel(tr("Print")), 3, 0, 1, 1);
 	printLineEdit = new QLineEdit;
-	printLineEdit->setMinimumSize(QSize(40, 20));
-	printLineEdit->setMaximumSize(QSize(40, 20));
+	printLineEdit->setMinimumSize(QSize(55, 20));
+	printLineEdit->setMaximumSize(QSize(55, 20));
 	printLineEdit->setAccessibleName("printShortcut");
 	connect(printLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutFileGroupBox->addWidget(printLineEdit, 3, 1, 1, 1);
+	gridLayoutFileGroupBox->addWidget(printLineEdit, 3, 1, 1, 1, Qt::AlignRight);
 	gridLayoutFileGroupBox->addWidget(new QLabel(tr("Close")), 4, 0, 1, 1);
 	closeLineEdit = new QLineEdit;
-	closeLineEdit->setMinimumSize(QSize(40, 20));
-	closeLineEdit->setMaximumSize(QSize(40, 20));
+	closeLineEdit->setMinimumSize(QSize(55, 20));
+	closeLineEdit->setMaximumSize(QSize(55, 20));
 	closeLineEdit->setAccessibleName("closeShortcut");
 	connect(closeLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutFileGroupBox->addWidget(closeLineEdit, 4, 1, 1, 1);
+	gridLayoutFileGroupBox->addWidget(closeLineEdit, 4, 1, 1, 1, Qt::AlignRight);
 	
 	fileGroupBox->setLayout(gridLayoutFileGroupBox);
 	
 	//----------------------------------------------------
 	
 	editGroupBox->setGeometry(QRect(120, 0, 101, 212));
- 	editGroupBox->setMinimumSize(QSize(101, 212));
-	editGroupBox->setMaximumSize(QSize(101, 212));
 	gridLayoutEditGroupBox->setSpacing(6);
 	gridLayoutEditGroupBox->setMargin(9);
 	gridLayoutEditGroupBox->addWidget(new QLabel(tr("Undo")), 0, 0, 1, 1);
 	undoLineEdit = new QLineEdit;
-	undoLineEdit->setMinimumSize(QSize(40, 20));
-	undoLineEdit->setMaximumSize(QSize(40, 20));
+	undoLineEdit->setMinimumSize(QSize(55, 20));
+	undoLineEdit->setMaximumSize(QSize(55, 20));
 	undoLineEdit->setAccessibleName("undoShortcut");
 	connect(undoLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutEditGroupBox->addWidget(undoLineEdit, 0, 1, 1, 1);
+	gridLayoutEditGroupBox->addWidget(undoLineEdit, 0, 1, 1, 1, Qt::AlignRight);
 	gridLayoutEditGroupBox->addWidget(new QLabel(tr("Redo")), 1, 0, 1, 1);
 	redoLineEdit = new QLineEdit;
-	redoLineEdit->setMinimumSize(QSize(40, 20));
-	redoLineEdit->setMaximumSize(QSize(40, 20));
+	redoLineEdit->setMinimumSize(QSize(55, 20));
+	redoLineEdit->setMaximumSize(QSize(55, 20));
 	redoLineEdit->setAccessibleName("redoShortcut");
 	connect(redoLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutEditGroupBox->addWidget(redoLineEdit, 1, 1, 1, 1);
+	gridLayoutEditGroupBox->addWidget(redoLineEdit, 1, 1, 1, 1, Qt::AlignRight);
 	gridLayoutEditGroupBox->addWidget(new QLabel(tr("Cut")), 2, 0, 1, 1);
 	cutLineEdit = new QLineEdit;
-	cutLineEdit->setMinimumSize(QSize(40, 20));
-	cutLineEdit->setMaximumSize(QSize(40, 20));
+	cutLineEdit->setMinimumSize(QSize(55, 20));
+	cutLineEdit->setMaximumSize(QSize(55, 20));
 	cutLineEdit->setAccessibleName("cutShortcut");
 	connect(cutLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutEditGroupBox->addWidget(cutLineEdit, 2, 1, 1, 1);
+	gridLayoutEditGroupBox->addWidget(cutLineEdit, 2, 1, 1, 1, Qt::AlignRight);
 	gridLayoutEditGroupBox->addWidget(new QLabel(tr("Copy")), 3, 0, 1, 1);
 	copyLineEdit = new QLineEdit;
-	copyLineEdit->setMinimumSize(QSize(40, 20));
-	copyLineEdit->setMaximumSize(QSize(40, 20));
+	copyLineEdit->setMinimumSize(QSize(55, 20));
+	copyLineEdit->setMaximumSize(QSize(55, 20));
 	copyLineEdit->setAccessibleName("copyShortcut");
 	connect(copyLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutEditGroupBox->addWidget(copyLineEdit, 3, 1, 1, 1);
+	gridLayoutEditGroupBox->addWidget(copyLineEdit, 3, 1, 1, 1, Qt::AlignRight);
 	gridLayoutEditGroupBox->addWidget(new QLabel(tr("Paste")), 4, 0, 1, 1);
 	pasteLineEdit = new QLineEdit;
-	pasteLineEdit->setMinimumSize(QSize(40, 20));
-	pasteLineEdit->setMaximumSize(QSize(40, 20));
+	pasteLineEdit->setMinimumSize(QSize(55, 20));
+	pasteLineEdit->setMaximumSize(QSize(55, 20));
 	pasteLineEdit->setAccessibleName("pasteShortcut");
 	connect(pasteLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutEditGroupBox->addWidget(pasteLineEdit, 4, 1, 1, 1);
+	gridLayoutEditGroupBox->addWidget(pasteLineEdit, 4, 1, 1, 1, Qt::AlignRight);
 	gridLayoutEditGroupBox->addWidget(new QLabel(tr("Select")), 5, 0, 1, 1);
 	selectLineEdit = new QLineEdit;
-	selectLineEdit->setMinimumSize(QSize(40, 20));
-	selectLineEdit->setMaximumSize(QSize(40, 20));
+	selectLineEdit->setMinimumSize(QSize(55, 20));
+	selectLineEdit->setMaximumSize(QSize(55, 20));
 	selectLineEdit->setAccessibleName("selectShortcut");
 	connect(selectLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutEditGroupBox->addWidget(selectLineEdit, 5, 1, 1, 1);
+	gridLayoutEditGroupBox->addWidget(selectLineEdit, 5, 1, 1, 1, Qt::AlignRight);
 	gridLayoutEditGroupBox->addWidget(new QLabel(tr("Find")), 6, 0, 1, 1);
 	findLineEdit = new QLineEdit;
-	findLineEdit->setMinimumSize(QSize(40, 20));
-	findLineEdit->setMaximumSize(QSize(40, 20));
+	findLineEdit->setMinimumSize(QSize(55, 20));
+	findLineEdit->setMaximumSize(QSize(55, 20));
 	findLineEdit->setAccessibleName("findShortcut");
 	connect(findLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutEditGroupBox->addWidget(findLineEdit, 6, 1, 1, 1);
+	gridLayoutEditGroupBox->addWidget(findLineEdit, 6, 1, 1, 1, Qt::AlignRight);
 	
 	editGroupBox->setLayout(gridLayoutEditGroupBox);
 	
 	//----------------------------------------------------
 	
-	compileGroupBox->setMinimumSize(QSize(141, 82));
-	compileGroupBox->setMaximumSize(QSize(141, 82));
 	gridLayoutCompileGroupBox->setSpacing(6);
 	gridLayoutCompileGroupBox->setMargin(9);
-	gridLayoutCompileGroupBox->addWidget(new QLabel(tr("Undo")), 0, 0, 1, 1);
-	compUndoLineEdit = new QLineEdit;
-	compUndoLineEdit->setMinimumSize(QSize(40, 20));
-	compUndoLineEdit->setMaximumSize(QSize(40, 20));
-	compUndoLineEdit->setAccessibleName("compUndoShortcut");
-	connect(compUndoLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutCompileGroupBox->addWidget(compUndoLineEdit, 0, 1, 1, 1);
+	gridLayoutCompileGroupBox->addWidget(new QLabel(tr("Compile")), 0, 0, 1, 1);
+	compileLineEdit = new QLineEdit;
+	compileLineEdit->setMinimumSize(QSize(55, 20));
+	compileLineEdit->setMaximumSize(QSize(55, 20));
+	compileLineEdit->setAccessibleName("compileShortcut");
+	connect(compileLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
+	gridLayoutCompileGroupBox->addWidget(compileLineEdit, 0, 1, 1, 1, Qt::AlignRight);
 	gridLayoutCompileGroupBox->addWidget(new QLabel(tr("Interpret")), 1, 0, 1, 1);
 	interpretLineEdit = new QLineEdit;
-	interpretLineEdit->setMinimumSize(QSize(40, 20));
-	interpretLineEdit->setMaximumSize(QSize(40, 20));
+	interpretLineEdit->setMinimumSize(QSize(55, 20));
+	interpretLineEdit->setMaximumSize(QSize(55, 20));
 	interpretLineEdit->setAccessibleName("interpretShortcut");
 	connect(interpretLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutCompileGroupBox->addWidget(interpretLineEdit, 1, 1, 1, 1);
+	gridLayoutCompileGroupBox->addWidget(interpretLineEdit, 1, 1, 1, 1, Qt::AlignRight);
 	
 	compileGroupBox->setLayout(gridLayoutCompileGroupBox);
 	
-	debugGroupBox->setMinimumSize(QSize(141, 82));
-	debugGroupBox->setMaximumSize(QSize(141, 82));
 	gridLayoutDebugGroupBox->setSpacing(6);
 	gridLayoutDebugGroupBox->setMargin(9);
 	gridLayoutDebugGroupBox->addWidget(new QLabel(tr("Start")), 0, 0, 1, 1);
 	startLineEdit = new QLineEdit;
-	startLineEdit->setMinimumSize(QSize(40, 20));
-	startLineEdit->setMaximumSize(QSize(40, 20));
+	startLineEdit->setMinimumSize(QSize(55, 20));
+	startLineEdit->setMaximumSize(QSize(55, 20));
 	startLineEdit->setAccessibleName("startShortcut");
 	connect(startLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutDebugGroupBox->addWidget(startLineEdit, 0, 1, 1, 1);
+	gridLayoutDebugGroupBox->addWidget(startLineEdit, 0, 1, 1, 1, Qt::AlignRight);
 	gridLayoutDebugGroupBox->addWidget(new QLabel(tr("Next Step")), 1, 0, 1, 1);
 	nextStepLineEdit = new QLineEdit;
-	nextStepLineEdit->setMinimumSize(QSize(40, 20));
-	nextStepLineEdit->setMaximumSize(QSize(40, 20));
+	nextStepLineEdit->setMinimumSize(QSize(55, 20));
+	nextStepLineEdit->setMaximumSize(QSize(55, 20));
 	nextStepLineEdit->setAccessibleName("nextStepShortcut");
 	connect(nextStepLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutDebugGroupBox->addWidget(nextStepLineEdit, 1, 1, 1, 1);
+	gridLayoutDebugGroupBox->addWidget(nextStepLineEdit, 1, 1, 1, 1, Qt::AlignRight);
 	
 	debugGroupBox->setLayout(gridLayoutDebugGroupBox);
 	
-	helpGroupBox->setMinimumSize(QSize(141, 56));
-	helpGroupBox->setMaximumSize(QSize(141, 56));
 	gridLayoutHelpGroupBox->setSpacing(6);
 	gridLayoutHelpGroupBox->setMargin(9);
 	gridLayoutHelpGroupBox->addWidget(new QLabel(tr("BFS Handbook")), 0, 0, 1, 1);
 	handbookLineEdit = new QLineEdit;
-	handbookLineEdit->setMinimumSize(QSize(40, 20));
-	handbookLineEdit->setMaximumSize(QSize(40, 20));
+	handbookLineEdit->setMinimumSize(QSize(55, 20));
+	handbookLineEdit->setMaximumSize(QSize(55, 20));
 	handbookLineEdit->setAccessibleName("handbookShortcut");
 	connect(handbookLineEdit, SIGNAL(editingFinished()), this, SLOT(checkShortcut()));
-	gridLayoutHelpGroupBox->addWidget(handbookLineEdit, 0, 1, 1, 1);
+	gridLayoutHelpGroupBox->addWidget(handbookLineEdit, 0, 1, 1, 1, Qt::AlignRight);
 	
 	helpGroupBox->setLayout(gridLayoutHelpGroupBox);
 	
@@ -522,7 +507,7 @@ void SettingsDialog::readSettings()
 	pasteLineEdit->setText(settings->value("pasteShortcut").toString());
 	selectLineEdit->setText(settings->value("selectShortcut").toString());
 	findLineEdit->setText(settings->value("findShortcut").toString());
-	compUndoLineEdit->setText(settings->value("compUndoShortcut").toString());
+	compileLineEdit->setText(settings->value("compileShortcut").toString());
 	interpretLineEdit->setText(settings->value("interpretShortcut").toString());
 	startLineEdit->setText(settings->value("startShortcut").toString());
 	nextStepLineEdit->setText(settings->value("nextStepShortcut").toString());
@@ -620,7 +605,7 @@ void SettingsDialog::writeSettings()
 	settings->setValue("pasteShortcut", pasteLineEdit->text());
 	settings->setValue("selectShortcut", selectLineEdit->text());
 	settings->setValue("findShortcut", findLineEdit->text());
-	settings->setValue("compUndoShortcut", compUndoLineEdit->text());
+	settings->setValue("compileShortcut", compileLineEdit->text());
 	settings->setValue("interpretShortcut", interpretLineEdit->text());
 	settings->setValue("startShortcut", startLineEdit->text());
 	settings->setValue("nextStepShortcut", nextStepLineEdit->text());
@@ -673,6 +658,33 @@ void SettingsDialog::checkShortcut()
 	{
 		actLineEdit->setText("Alt+"+tempSc[4]);
 	}
+	else if((tempSc.length()==2 || tempSc.length()==3) && (tempSc[0]=='F' && tempSc[1] != '0'))
+	{
+		QString s = ""+tempSc[1];
+		int i = s.toInt();
+		
+		if(tempSc.length()==3)
+		{
+			cout << "1\n";
+			s = s+""+tempSc[2];
+			cout << "2\n";
+			i = s.toInt();
+		}
+		
+		if((i>0)  && (i<13))
+		{
+			actLineEdit->setText(tempSc);
+		}
+		else
+		{
+			actLineEdit->setText(settings->value(actLineEdit->accessibleName()).toString());
+			
+			QMessageBox::warning(this, "Brainfuck Studio",
+				"\""+tempSc+"\" is an invalid shortcut.",
+				"OK"
+			);
+		}
+	}
 	else
 	{
 		actLineEdit->setText(settings->value(actLineEdit->accessibleName()).toString());
@@ -695,7 +707,7 @@ void SettingsDialog::checkShortcut()
 	if((actLineEdit != pasteLineEdit) && (actLineEdit->text() == pasteLineEdit->text())) pasteLineEdit->clear();
 	if((actLineEdit != selectLineEdit) && (actLineEdit->text() == selectLineEdit->text())) selectLineEdit->clear();
 	if((actLineEdit != findLineEdit) && (actLineEdit->text() == findLineEdit->text())) findLineEdit->clear();
-	if((actLineEdit != compUndoLineEdit) && (actLineEdit->text() == compUndoLineEdit->text())) compUndoLineEdit->clear();
+	if((actLineEdit != compileLineEdit) && (actLineEdit->text() == compileLineEdit->text())) compileLineEdit->clear();
 	if((actLineEdit != interpretLineEdit) && (actLineEdit->text() == interpretLineEdit->text())) interpretLineEdit->clear();
 	if((actLineEdit != startLineEdit) && (actLineEdit->text() == startLineEdit->text())) startLineEdit->clear();
 	if((actLineEdit != nextStepLineEdit) && (actLineEdit->text() == nextStepLineEdit->text())) nextStepLineEdit->clear();

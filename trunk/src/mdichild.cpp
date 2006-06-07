@@ -7,6 +7,7 @@ MdiChild::MdiChild()
     setAttribute(Qt::WA_DeleteOnClose);
     setUndoRedoEnabled(true);
     isUntitled = true;
+	compiled = false;
 
     connect(document(), SIGNAL(contentsChanged()),
             this, SLOT(documentWasModified()));
@@ -146,6 +147,16 @@ void MdiChild::setCurrentFile(const QString &fileName)
     document()->setModified(false);
     setWindowModified(false);
     setWindowTitle(userFriendlyCurrentFile() + "[*]");
+}
+
+void MdiChild::setCompiled(const bool compiled)
+{
+	this->compiled = compiled;
+}
+
+bool MdiChild::isCompiled()
+{
+	return compiled;
 }
 
 QString MdiChild::strippedName(const QString &fullFileName)

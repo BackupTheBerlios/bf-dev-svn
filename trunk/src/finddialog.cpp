@@ -5,9 +5,9 @@
 FindDialog::FindDialog(QWidget *parent)
     : QDialog(parent)
 {
-    resize(275, 190);
-    setMaximumSize(275, 190);
-    setMinimumSize(275, 190);
+	resize(QSize(300 , 200).expandedTo(minimumSizeHint()));
+	setMinimumSize(QSize(350 , 200).expandedTo(minimumSizeHint()));
+	setMaximumSize(QSize(350 , 200).expandedTo(minimumSizeHint()));
     
     this->parent = parent;
     
