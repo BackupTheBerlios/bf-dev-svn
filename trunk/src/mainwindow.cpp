@@ -423,7 +423,8 @@ void MainWindow::run()
 	if(!activeMdiChild()->isCompiled())
 		compile();
 
-	QString cmd(actualFilePath());
+	QString cmd("sh -c ");
+	cmd.append(actualFilePath());
 	system(cmd.toStdString().c_str());
 
 }

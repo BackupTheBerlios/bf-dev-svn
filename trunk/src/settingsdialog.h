@@ -50,6 +50,7 @@ class SettingsDialog : public QDialog
 		void changeSizeSettings(int);
 		void changeColorSettings(int);
 		void checkShortcut();
+		void reconstructStandard();
 	
 	private:
 		void readSettings();
@@ -118,6 +119,7 @@ class SettingsDialog : public QDialog
 		QHBoxLayout *hboxLayoutShortcutsMain;
 		QPushButton *okButton;
 		QPushButton *cancelButton;
+		QPushButton *reconstructStandardButton;
 		QHBoxLayout *hboxLayoutButtons;
 		QVBoxLayout *vboxLayoutMain;
 		QSettings *settings;

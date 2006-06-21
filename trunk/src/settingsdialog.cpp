@@ -410,12 +410,15 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	
 	okButton = new QPushButton(tr("OK"));
 	cancelButton = new QPushButton(tr("Cancel"));
+	reconstructStandardButton = new QPushButton(tr("Standard"));
 	
 	connect(okButton, SIGNAL(clicked()), this, SLOT(accept()));
-	connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 	connect(okButton, SIGNAL(clicked()), this, SLOT(writeSettings()));
+	connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(reconstructStandardButton, SIGNAL(clicked()), this, SLOT(reconstructStandard()));
 	
 	hboxLayoutButtons = new QHBoxLayout;
+	hboxLayoutButtons->addWidget(reconstructStandardButton);
 	hboxLayoutButtons->addStretch(1);
 	hboxLayoutButtons->addWidget(okButton);
 	hboxLayoutButtons->addWidget(cancelButton);
@@ -569,26 +572,33 @@ void SettingsDialog::writeSettings()
 	settings->setValue("platform", platformComboBox->currentIndex());
 	settings->setValue("optimisation", optimisationComboBox->currentIndex());
 	
-	QDir *d = new QDir();
-	d->setPath(workspaceLineEdit->text());
-	if(!d->exists())
+	if(workspaceLineEdit->text() == "")
 	{
-		if(!d->mkdir(workspaceLineEdit->text()))
+		settings->setValue("workspace", "");
+	}
+	else
+	{
+		QDir *d = new QDir();
+		d->setPath(workspaceLineEdit->text());
+		if(!d->exists())
 		{
-			QMessageBox::warning(this, "Brainfuck Studio",
-				"\""+workspaceLineEdit->text()+"\" is not writeable.\n"
-				"Workspace remains \""+settings->value("workspace").toString()+"\".",
-				"OK"
-			);
+			if(!d->mkdir(workspaceLineEdit->text()))
+			{
+				QMessageBox::warning(this, "Brainfuck Studio",
+					"\""+workspaceLineEdit->text()+"\" is not writeable.\n"
+					"Workspace remains \""+settings->value("workspace").toString()+"\".",
+					"OK"
+				);
+			}
+			else
+			{
+				settings->setValue("workspace", workspaceLineEdit->text());
+			}
 		}
 		else
 		{
 			settings->setValue("workspace", workspaceLineEdit->text());
 		}
-	}
-	else
-	{
-		settings->setValue("workspace", workspaceLineEdit->text());
 	}
 	
 	settings->setValue("showWarnings", warningsCheckBox->checkState());
@@ -612,6 +622,93 @@ void SettingsDialog::writeSettings()
 	settings->setValue("handbookShortcut", handbookLineEdit->text());
 	
 	settings->sync();
+}
+
+void SettingsDialog::reconstructStandard()
+{
+	if(tabWidget->currentIndex() == 0)
+	{
+		lineNumbersCheckBox->setCheckState(Qt::Unchecked);
+		syntaxHighlightingCheckBox->setCheckState(Qt::Unchecked);
+		endOfLineComboBox->setCurrentIndex(1);
+		encodingComboBox->setCurrentIndex(0);
+		
+		tempSettings[0][0] = 0;
+		tempSettings[0][1] = 0;
+		tempSettings[0][2] = 0;
+		tempSettings[0][3] = 0;
+	
+		tempSettings[1][0] = 0;
+		tempSettings[1][1] = 0;
+		tempSettings[1][2] = 0;
+		tempSettings[1][3] = 0;
+	
+		tempSettings[2][0] = 0;
+		tempSettings[2][1] = 0;
+		tempSettings[2][2] = 0;
+		tempSettings[2][3] = 0;
+	
+		tempSettings[3][0] = 0;
+		tempSettings[3][1] = 0;
+		tempSettings[3][2] = 0;
+		tempSettings[3][3] = 0;
+	
+		tempSettings[4][0] = 0;
+		tempSettings[4][1] = 0;
+		tempSettings[4][2] = 0;
+		tempSettings[4][3] = 0;
+	
+		tempSettings[5][0] = 0;
+		tempSettings[5][1] = 0;
+		tempSettings[5][2] = 0;
+		tempSettings[5][3] = 0;
+	
+		tempSettings[6][0] = 0;
+		tempSettings[6][1] = 0;
+		tempSettings[6][2] = 0;
+		tempSettings[6][3] = 0;
+	
+		tempSettings[7][0] = 0;
+		tempSettings[7][1] = 0;
+		tempSettings[7][2] = 0;
+		tempSettings[7][3] = 0;
+		
+		tempSettings[8][0] = 0;
+		tempSettings[8][1] = 0;
+		tempSettings[8][2] = 0;
+		tempSettings[8][3] = 0;
+		
+		readCharacterSettings(0);
+	}
+	else if(tabWidget->currentIndex() == 1)
+	{
+		platformComboBox->setCurrentIndex(1);
+		optimisationComboBox->setCurrentIndex(0);
+		
+		workspaceLineEdit->setText("");
+			
+		warningsCheckBox->setCheckState(Qt::Unchecked);
+	}
+	else if(tabWidget->currentIndex() == 2)
+	{
+		newLineEdit->setText("Ctrl+N");
+		openLineEdit->setText("Ctrl+O");
+		saveLineEdit->setText("Ctrl+S");
+		printLineEdit->setText("Ctrl+P");
+		closeLineEdit->setText("Ctrl+W");
+		undoLineEdit->setText("Ctrl+Z");
+		redoLineEdit->setText("Ctrl+Y");
+		cutLineEdit->setText("Ctrl+X");
+		copyLineEdit->setText("Ctrl+C");
+		pasteLineEdit->setText("Ctrl+V");
+		selectLineEdit->setText("Ctrl+A");
+		findLineEdit->setText("Ctrl+F");
+		compileLineEdit->setText("F5");
+		interpretLineEdit->setText("F6");
+		startLineEdit->setText("F7");
+		nextStepLineEdit->setText("F8");
+		handbookLineEdit->setText("F1");
+	}
 }
 
 void SettingsDialog::readCharacterSettings(int index)
